@@ -1,0 +1,33 @@
+.apply-cards {
+  border-radius: 8px;
+  background-color: $secondary;
+  display: flex;
+  width: 18.8125rem;
+  padding-bottom: 0.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  align-self: stretch;
+
+  p {
+    text-align: center;
+    padding: 0 0.75rem;
+    margin: 0;
+  }
+
+  h4{
+    text-align: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0 0.75rem;
+  }
+
+  .card-img{
+    text-align: center;
+
+  }
+  img {
+    margin-top: 1rem;
+    width: 80%;
+  }
+}

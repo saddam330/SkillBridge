@@ -1,0 +1,55 @@
+h2 {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.get-start {
+  width: 70%;
+  margin: 1rem auto;
+  height: 80vh;
+}
+
+.employer {
+  background-color:#F9FAFB ;
+  padding-top: 1.5rem;
+}
+
+.button{
+    text-align: center;
+    margin-top: 3rem;
+    width: 100%;
+  }
+
+.featured{
+  height: 60vh;
+}
+.review{
+  height: 60vh;
+  background-color: #F9FAFB;
+}
+.bottom-cta {
+  height: 40vh;
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h2, p{
+    color: white;
+    width: 40%;
+    text-align: center;
+  }
+  h2{
+    margin: 1rem;
+  }
+
+
+  .btn-candidate{
+    background-color: #3F54EB;
+    border: 1px solid white;
+    color: white;
+  }
+
+
+}
