@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/show'
+
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -9,4 +12,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :users, only: [:index, :show]
+  resources :projects do
+    resources :applications, only: [:new, :create]
+  end
+  resources :applications, only: [:index, :show, :update] do
+    resources :feedbacks, only: [:new, :create]
+  end
+
 end

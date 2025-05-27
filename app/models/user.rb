@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
-  validates :first_name, :last_name, presence: true
+  # validates :first_name, :last_name, :password, presence: true
+
 
 end
