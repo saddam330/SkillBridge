@@ -3,8 +3,8 @@
 
 <h1>Welcome, <%= @users.first_name%> <%= @users.last_name %></h1>
 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier"%>
-<% if @users.employee%>
-<h3>Role: Employee</h3>
+<% if @users.employer%>
+<h3>Role: employer</h3>
 <%else%>
 <h3>Role: Student</h3>
 <%end%>
