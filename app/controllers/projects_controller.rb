@@ -31,8 +31,19 @@ class ProjectsController < ApplicationController
   def destroy
   end
 
-  private
+  def apply
+    @project = Project.find(params[:id])
+    @application = @project.applications.new(user: current_user)
 
+    if @application.save
+      redirect_to @project_path, notice: 'Application was successfully created.'
+    else
+      redirect_to @project, alert: 'Failed to apply for the project.'
+    end
+  end
+
+  private
+  
   def project_params
     params.require(:project).permit(:project_title, :project_description, :job_title, :job_description,
     :requirements, :duration, :category, :closing_date, :start_date, :location)
