@@ -36,7 +36,13 @@ projects = 10.times.map do
     job_title: Faker::Job.title,
     job_description: Faker::Job.field,
     duration: "#{rand(1..12)} months",
-    requirements: Faker::Lorem.sentence(word_count: 8),
+    requirements: [
+      "Ruby on Rails",
+      "JavaScript",
+      "React",
+      "PostgreSQL",
+      "AWS"
+    ].sample(rand(2..5)).join(", "),
     category: Faker::Job.field,
     closing_date: Faker::Date.forward(days: 30),
     start_date: Faker::Date.forward(days: 60),
