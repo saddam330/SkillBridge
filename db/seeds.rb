@@ -24,7 +24,7 @@ users = 10.times.map do
     password: Faker::Internet.password(min_length: 10),
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    employee: [true, false].sample,
+    employer: [true, false].sample,
     skills: [
       "Ruby on Rails",
       "JavaScript",
