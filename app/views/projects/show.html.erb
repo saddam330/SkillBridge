@@ -1,2 +1,192 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<div class="container mt-3">
+
+  <!-- Home Breadcrumb I will remove after -->
+  <div class="mb-3">
+    <%= link_to "Home", root_path %></li>
+    <%= link_to "Back to All Projects", projects_path %>
+  </div>
+
+
+  <div class="row">
+
+    <!-- Main Content -->
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <h1 class="card-title"><%= @project.project_title %></h1>
+            <div>
+              <button class="btn btn-outline-dark btn-sm me-2">
+                <i class="bi bi-bookmark"></i> Save
+              </button>
+            </div>
+          </div>
+
+          <p class="text-muted mb-0"><%= @project.user.email %></p>
+
+          <!-- Project Details -->
+          <div class="d-flex align-items-center my-3">
+            <div class="me-4 d-flex align-items-center">
+              <i class="bi bi-geo-alt me-1"></i>
+              <span>Location: <%= @project.location %></span>
+            </div>
+            <div class="me-4 d-flex align-items-center">
+              <i class="bi bi-calendar-event me-1"></i>
+              <span>Duration: <%= @project.duration %></span>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center my-3">
+            <div class="me-4 d-flex align-items-center">
+              <i class="bi bi-clock me-1"></i>
+              <span>Start: <%= @project.start_date.strftime("%B %d, %Y") %></span>
+            </div>
+            <div class="me-4 d-flex align-items-center">
+              <i class="bi bi-currency-dollar me-1"></i>
+              <span>Salary: £1 or Less 😩</span>
+            </div>
+          </div>
+
+          <% if @project.created_at %>
+            <div class="mt-2 mb-3">
+              <span class="badge bg-light text-dark border">Posted <%= time_ago_in_words(@project.created_at) %> ago</span>
+              <span class="badge bg-light text-dark border ms-2"><%= rand(10..50) %> applicants</span>
+            </div>
+          <% end %>
+
+          <div class="mt-4">
+            <button class="btn btn-primary">Apply Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- About the Internship -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <h3 class="card-title">About the Project</h3>
+          <p><%= @project.project_description %></p>
+
+          <h3 class="mt-4">Responsibilities</h3>
+          <ul>
+            <% @project.job_description.split(".").reject(&:blank?).each do |responsibility| %>
+              <li><%= responsibility.strip %>.</li>
+            <% end %>
+          </ul>
+
+          <h3 class="mt-4">Requirements</h3>
+          <ul>
+            <% @project.requirements.to_s.split(".").reject(&:blank?).each do |requirement| %>
+              <li><%= requirement.strip %>.</li>
+            <% end %>
+          </ul>
+
+          <!-- Skills -->
+          <h3 class="mt-4">Skills</h3>
+          <div class="mb-2">
+            <strong class="text-muted">Required:</strong>
+          </div>
+          <div class="mb-3">
+            <span class="badge bg-primary me-2 mb-2">HTML/CSS</span>
+            <span class="badge bg-primary me-2 mb-2">JavaScript</span>
+            <span class="badge bg-primary me-2 mb-2">React</span>
+            <span class="badge bg-primary me-2 mb-2">Responsive Design</span>
+            <span class="badge bg-primary me-2 mb-2">Git</span>
+          </div>
+
+          <div class="mb-2">
+            <strong class="text-muted">Nice to have:</strong>
+          </div>
+          <div>
+            <span class="badge bg-secondary me-2 mb-2">TypeScript</span>
+            <span class="badge bg-secondary me-2 mb-2">UI/UX Design</span>
+            <span class="badge bg-secondary me-2 mb-2">Next.js</span>
+            <span class="badge bg-secondary me-2 mb-2">Tailwind CSS</span>
+          </div>
+
+          <!-- Perks -->
+          <h3 class="mt-4">Perks</h3>
+          <ul>
+            <li>Flexible working hours</li>
+            <li>Mentorship from experienced developers</li>
+            <li>Performance-based Salary increases</li>
+            <li>Certificate upon completion</li>
+            <li>Possibility of pre-placement offer for exceptional performers</li>
+          </ul>
+
+          <!-- Learning Outcomes -->
+          <h3 class="mt-4">Learning Outcomes</h3>
+          <ul>
+            <li>Proficiency in modern frontend technologies</li>
+            <li>Experience with industry-standard development workflows</li>
+            <li>Understanding of responsive design principles</li>
+            <li>Collaborative development using Git and GitHub</li>
+            <li>Portfolio-worthy projects to showcase</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Text at the bottom and the Apply Button -->
+
+      <div class="mb-4 text-center">
+        <p class="text-muted">Interesting in this opportunity? Don't wait too long!</p>
+        <button class="btn btn-primary">Apply Now</button>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title"> About <%= @project.user.email.split('@').first %> company</h4>
+          <p>
+            We're a fast-growing tech startup focusing on creating innovative web applications
+            for clients across various industries. We're passionate about clean code, user experience,
+            and pushing the boundaries of what's possible on the web.
+          </p>
+          <a href="#" class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-globe"></i> Visit website
+          </a>
+        </div>
+      </div>
+
+      <!-- Similar Projects -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">Similar Projects</h4>
+
+          <% Project.where.not(id: @project.id).limit(3).each do |similar_project| %>
+            <div class="card mb-3">
+              <div class="card-body py-2 px-3">
+                <h6 class="mb-1"><%= link_to similar_project.project_title, project_path(similar_project), class: "text-decoration-none" %></h6>
+                <p class="text-muted mb-0 small"><%= similar_project.user.email.split('@').first %> • <%= similar_project.location %></p>
+              </div>
+            </div>
+          <% end %>
+
+          <%= link_to "View More", projects_path, class: "btn btn-outline-secondary btn-sm w-100 mt-2" %>
+        </div>
+      </div>
+
+      <!-- Tips for Applicants -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">
+            <i class="bi bi-lightbulb text-warning me-2"></i>
+            Tips for Applicants
+          </h4>
+          <ol class="ps-3">
+            <li class="mb-2">
+              <strong>Tailor your application</strong> to highlight relevant skills and projects.
+            </li>
+            <li class="mb-2">
+              <strong>Be specific about why</strong> you're interested in this particular project.
+            </li>
+            <li>
+              <strong>Showcase any relevant side projects</strong> or coursework in your portfolio.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
