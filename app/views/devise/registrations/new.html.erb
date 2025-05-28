@@ -23,7 +23,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :employee,
+    <%= f.input :employer,
                 collection:[["yes", true], ["no", false]], prompt: "Select your Role",
                 required: true,
                 input_html: { value:false, autocomplete: "employee" }%>
