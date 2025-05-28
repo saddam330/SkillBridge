@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    
+
     @project = current_user.projects.build(project_params)
     if @project.save
       redirect_to projects_path, notice: "Project posted successfully!"
@@ -39,10 +39,9 @@ class ProjectsController < ApplicationController
   end
 
   private
-  
+
   def set_project
-    begin
-      @project = Project.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def apply
@@ -56,7 +55,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  
   def project_params
     params.require(:project).permit(:project_title, :project_description, :job_title, :job_description,
     :requirements, :duration, :category, :closing_date, :start_date, :location, :perks, :learning_outcomes, :company_name )
