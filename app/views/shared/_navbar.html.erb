@@ -17,6 +17,15 @@
           <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
+          <%if !current_user.employee %>
+            <li class="nav-item">
+            <%= link_to "My Profile", user_path(current_user), class: "nav-link" %>
+          </li>
+          <%else%>
+            <li class="nav-item">
+            <%= link_to "List of Candidates", "users", class: "nav-link" %>
+          </li>
+          <%end%>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
