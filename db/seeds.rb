@@ -24,7 +24,14 @@ users = 10.times.map do
     password: Faker::Internet.password(min_length: 10),
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    employee: [true, false].sample
+    employee: [true, false].sample,
+    skills: [
+      "Ruby on Rails",
+      "JavaScript",
+      "React",
+      "PostgreSQL",
+      "AWS"
+    ].sample(rand(2..5)).join(", "),
   )
 end
 
@@ -47,6 +54,21 @@ projects = 10.times.map do
     closing_date: Faker::Date.forward(days: 30),
     start_date: Faker::Date.forward(days: 60),
     location: Faker::Address.city,
+    perks: [
+      "Flexible working hours",
+      "Remote work options",
+      "Professional development budget",
+      "Health insurance",
+      "Gym membership"
+    ].sample(rand(1..3)).join(", "),
+    learning_outcomes: [
+      "Gain experience with agile development methodologies",
+      "Improve full-stack development skills",
+      "Learn cloud deployment best practices",
+      "Build expertise in test-driven development",
+      "Develop skills in microservice architecture"
+    ].sample(rand(1..3)).join(", "),
+
     user: users.sample
   )
 end
