@@ -4,6 +4,10 @@
   padding: 1.5rem;
   width: 100%;
   border-radius: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 
   .featured-top{
     display: flex;
@@ -17,6 +21,8 @@
     span{
       width: auto;
       color: #4AD03B;
+      font-size: 0.75rem;
+
     }
   }
   .company-info{
@@ -30,7 +36,14 @@
   }
   .skills {
     color: $text;
+    width: auto;
   }
+
+  span.pill.skills {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: fit-content !important;
+}
   .btn{
     width: 100%;
   }

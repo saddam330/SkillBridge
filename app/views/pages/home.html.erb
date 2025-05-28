@@ -1,6 +1,6 @@
 <% # hero section %>
 <div class="hero-banner" >
-  <p class="pill">Connecting talent with opportunity</p>
+   <span class="pill">Connecting talent with opportunity</span>
   <h1>SkillBridge Where Talents Meet Start-up.</h1>
   <p class="tagline m-1">Bridges the gap between ambitious individual seeking real-world experience and startups looking for fresh talent.</p>
   <%= link_to "Get Started", projects_path, class: "btn btn-primary w-25 m-4" %>
@@ -77,7 +77,8 @@
 
 <% # Review section %>
 <div class="review ">
-  <h2 class="pt-5">Success Story</h2>
+  <div class="rew-sec">
+    <h2>Success Story</h2>
   <div class="column-grid container w-75">
     <% @feedbacks.each do |feedback| %>
     <div class="feedback-card">
@@ -95,6 +96,7 @@
       <p class="rating"> <%= "⭐" * feedback.rating %> </p>
     </div>
   <% end %>
+  </div>
   </div>
 </div>
 
