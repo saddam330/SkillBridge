@@ -2,7 +2,6 @@
 <h1>My Details</h1>
 
 <h1>Welcome, <%= @users.first_name%> <%= @users.last_name %></h1>
-<%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier"%>
 <% if @users.employer%>
 <h3>Role: employer</h3>
 <%else%>
@@ -11,3 +10,5 @@
   <h3><%=@users.first_name%></h3>
   <h3><%=@users.last_name%></h3>
   <h3><%=@users.email%></h3>
+  <%= cl_image_tag @users.photo.key%>
+  <%= @users.skills%>
