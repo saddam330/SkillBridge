@@ -3,10 +3,26 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @projects = Project.all
+
     if params[:query].present?
-      @projects = Project.search_by_title_and_description(params[:query])
-    else
-      @projects = Project.all
+      @projects = Project.search_by_title_and_description(params[:query].capitalize)
+    end
+
+    if params[:location].present?
+    @projects = @projects.where(location: params[:location])
+    end
+
+    if params[:duration].present?
+      if params[:duration].include?("3-6")
+        @projects = @projects.where(duration: ["3 months", "4 months" , "5 months", "6 months"])
+      elsif params[:duration].include?("1-3")
+        @projects = @projects.where(duration: ["1 months", "2 months" , "3 months"])
+      end
+    end
+
+    if params[:category].present?
+      @projects = @projects.where(category: params[:category])
     end
   end
 
