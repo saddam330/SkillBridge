@@ -41,4 +41,11 @@ class ProjectsController < ApplicationController
       redirect_to @project, alert: 'Failed to apply for the project.'
     end
   end
+
+  private
+  
+  def project_params
+    params.require(:project).permit(:project_title, :project_description, :job_title, :job_description,
+    :requirements, :duration, :category, :closing_date, :start_date, :location)
+  end
 end
