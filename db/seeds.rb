@@ -54,20 +54,22 @@ projects = 10.times.map do
     closing_date: Faker::Date.forward(days: 30),
     start_date: Faker::Date.forward(days: 60),
     location: Faker::Address.city,
+    company_name: Faker::Company.name,
+    company_details: "#{Faker::Company.catch_phrase}. We are a #{Faker::Company.industry} company founded in #{rand(2000..2022)}. #{Faker::Company.bs.capitalize}. Our team of #{rand(10..500)} employees is dedicated to #{Faker::Company.bs.capitalize}.",
     perks: [
       "Flexible working hours",
       "Remote work options",
       "Professional development budget",
       "Health insurance",
       "Gym membership"
-    ].sample(rand(1..3)).join(", "),
+    ].sample(rand(4..5)).join(", "),
     learning_outcomes: [
       "Gain experience with agile development methodologies",
       "Improve full-stack development skills",
       "Learn cloud deployment best practices",
       "Build expertise in test-driven development",
       "Develop skills in microservice architecture"
-    ].sample(rand(1..3)).join(", "),
+    ].sample(rand(4..5)).join(", "),
 
     user: users.sample
   )

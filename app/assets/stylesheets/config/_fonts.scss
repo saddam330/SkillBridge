@@ -1,8 +1,10 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css2?family=Cambo&family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 // Define fonts for body and headers
-$body-font: "Cambo", "serif";
+$body-font: "Inter", "sans-serif",;
 $headers-font: "Chivo", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
