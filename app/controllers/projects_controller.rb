@@ -1,10 +1,14 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-
-  def index
+def index
+  @projects = Project.all
+  if params[:query].present?
+    @projects = Project.search_by_title_and_description(params[:query])
+  else
     @projects = Project.all
   end
+end
 
   def show
   end
@@ -43,7 +47,7 @@ class ProjectsController < ApplicationController
   end
 
   private
-  
+
   def project_params
     params.require(:project).permit(:project_title, :project_description, :job_title, :job_description,
     :requirements, :duration, :category, :closing_date, :start_date, :location)

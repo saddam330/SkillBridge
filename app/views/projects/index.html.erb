@@ -67,13 +67,16 @@
     </aside>
 
     <!-- Main Projects Area -->
-    <main class="col-md-9">
-      <!-- Search Bar -->
-      <div class="input-group mb-4">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-        <input type="text" class="form-control" placeholder="Search for projects...">
-        <button class="btn btn-primary">Search</button>
-      </div>
+  <%= form_with url: projects_path, method: :get, local: true do %>
+  <div class="input-group mb-4">
+    <span class="input-group-text">
+      <i class="bi bi-search"></i>
+    </span>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for projects..." %>
+    <button class="btn btn-primary">Search</button>
+  </div>
+  <% end %>
+
 
       <!-- Project Cards -->
       <% @projects.each do |project| %>
