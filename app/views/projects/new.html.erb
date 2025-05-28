@@ -1,2 +1,53 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<div class="container w-75"></div>
+  <h1 class="text-3xl font-bold mb-6">Post a New Project</h1>
+
+  <%= simple_form_for @project, html: { class: "space-y-6" } do |f| %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <%= f.input :project_title, label: "Project Title", placeholder: "e.g. Build a Marketing Website for Our Fintech Startup", input_html: { class: "w-full" } %>
+
+      <%= f.input :job_title, label: "Job Title", placeholder: "e.g. Front-End Intern (React)", input_html: { class: "w-full" } %>
+
+      <%= f.input :category, collection: ["Web Development",
+        "UI/UX Design",
+        "Mobile App Development",
+        "Graphic Design",
+        "Content Writing",
+        "Digital Marketing",
+        "Social Media Management",
+        "SEO & Analytics",
+        "Video Editing",
+        "Customer Research",
+        "Business Strategy",
+        "Product Management",
+        "Data Analysis",
+        "Machine Learning / AI",
+        "Sales & Lead Generation",
+        "Human Resources"],
+      prompt: "Select Category", input_html: { class: "w-full" } %>
+
+      <%= f.input :location, placeholder: "e.g. London or West Midlands", input_html: { class: "w-full" } %>
+
+      <%= f.input :duration, placeholder: "e.g. 2 weeks", input_html: { class: "w-full" } %>
+
+      <%= f.input :start_date, as: :date, input_html: { class: "w-full" } %>
+
+      <%= f.input :closing_date, as: :date, input_html: { class: "w-full" } %>
+
+      <%= f.input :requirements, label: "Required Skills", placeholder: "e.g. React, Figma", input_html: { class: "w-full" } %>
+
+      <div class="md:col-span-2">
+        <%= f.input :project_description, as: :text, label: "Project Description", placeholder: "What is this project? What needs to be built or researched? Include the problem you're solving, key tasks, and what the intern will learn or accomplish by the end.", input_html: { rows: 4, class: "w-full" } %>
+      </div>
+
+      <div class="md:col-span-2">
+        <%= f.input :job_description, as: :text, label: "Job Description", placeholder: "e.g. As a Front-End Intern, you'll help us build responsive UI components for our startup's landing page. You'll collaborate with our design team to translate Figma mockups into code, contribute to our React codebase, and participate in regular feedback sessions with the product lead.", input_html: { rows: 4, class: "w-full" } %>
+      </div>
+
+    </div>
+
+    <div class="text-center">
+      <%= f.button :submit, "Post Project", class: " btn bnt-primary bg-blue-600 text-black px-6 py-2 rounded hover:bg-blue-700 transition" %>
+    </div>
+  <% end %>
+</div>
