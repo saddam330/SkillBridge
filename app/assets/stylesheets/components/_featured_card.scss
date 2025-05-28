@@ -1,0 +1,38 @@
+
+.featured-card {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  width: 100%;
+  border-radius: 8px;
+
+  .featured-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4{
+      margin: 0;
+    }
+
+    span{
+      width: auto;
+      color: #4AD03B;
+    }
+  }
+  .company-info{
+    color: darkgray;
+    margin:4px 0;
+
+  }
+
+  .project-brief{
+    margin: 1rem 0;
+  }
+  .skills {
+    color: $text;
+  }
+  .btn{
+    width: 100%;
+  }
+
+}
