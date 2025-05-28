@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
+
   def index
     @projects = Project.all
   end
@@ -7,12 +10,19 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @project = Project.new
   end
 
   def edit
   end
 
   def create
+    @project = current_user.projects.build(project_params)
+    if @project.save
+      redirect_to projects_path, notice: "Project posted successfully!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update

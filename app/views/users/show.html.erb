@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3><%= link_to "Go to homepage", "/" %></h3>
+<h1>My Details</h1>
+
+<h1>Welcome, <%= @users.first_name%> <%= @users.last_name %></h1>
+<%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier"%>
+<% if @users.employee%>
+<h3>Role: Employee</h3>
+<%else%>
+<h3>Role: Student</h3>
+<%end%>
+  <h3><%=@users.first_name%></h3>
+  <h3><%=@users.last_name%></h3>
+  <h3><%=@users.email%></h3>
