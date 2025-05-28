@@ -40,9 +40,7 @@
 *.swp
 .DS_Store
 .env*
-<<<<<<< HEAD
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
-=======
->>>>>>> e4ede9b7873c213bac87791eabee45a3ddf02fba
+
