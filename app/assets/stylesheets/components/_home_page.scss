@@ -7,6 +7,13 @@ h2 {
   width: 70%;
   margin: 1rem auto;
   height: 80vh;
+
+  .btn{
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .employer {
@@ -50,6 +57,18 @@ h2 {
     border: 1px solid white;
     color: white;
     margin-right: 0.5rem;
+
+    &:hover {
+      background-color: $primary;
+      transform: scale(1.05);
+    }
+  }
+
+  .btn-secondary {
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
 
