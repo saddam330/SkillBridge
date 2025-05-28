@@ -3,7 +3,6 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-
 <div class="form-inputs" >
 <%= f.input :first_name,
                 required: true,
@@ -28,45 +27,7 @@
                 collection:[["yes", true], ["no", false]], prompt: "Select your Role",
                 required: true,
                 input_html: { value:false, autocomplete: "employee" }%>
-    <%= f.input :skills,
-                required: false,
-                input_html: { autocomplete: "photo" }%>
-    <%= f.input :photo,  as: :file,
-                required: false,
-                input_html: { autocomplete: "photo" }%>
-    <%= f.input :cv,  as: :file,
-                required: false,
-                input_html: { autocomplete: "CV" }%>
-                  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-<% if f.object.employee != true%>
-<div class="form-inputs" >
-<%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "first_name" }%>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last_name" }%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :employee,
-                collection:[["yes", true], ["no", false]], prompt: "Select your Role",
-                required: true,
-                input_html: { value:false, autocomplete: "employee" }%>
-    <h2><b>Note:</b> Section below for students only </h2>
+    <h5><b>Note:</b> Section below for students only </h5>
     <%= f.input :skills,
                 required: false,
                 input_html: { autocomplete: "photo" }%>
