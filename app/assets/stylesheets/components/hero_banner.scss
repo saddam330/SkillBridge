@@ -1,0 +1,29 @@
+.hero-banner {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(180deg, #E6F0FF 0%, #F8F8F8 100%);
+
+
+  h1{
+    font-weight: 900;
+    width: 45%;
+    text-align: center;
+    margin: 0;
+  }
+  .tagline {
+    text-align: center;
+    width: 40%;
+    font-size: 1.2rem;
+  }
+.btn {
+  padding: 0.75rem;
+  border-radius: 4px;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+}
+}

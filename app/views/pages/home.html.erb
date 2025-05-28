@@ -1,6 +1,110 @@
-<div class="hero-banner container" >
-  <p class="hero-pill">Connecting talent with opportunity</p>
+<% # hero section %>
+<div class="hero-banner" >
+  <p class="pill">Connecting talent with opportunity</p>
   <h1>SkillBridge Where Talents Meet Start-up.</h1>
-  <p>Bridges the gap between ambitious individual seeking real-world experience and startups looking for fresh talent.</p>
-  <%= link_to "Get Started", projects_path %>
+  <p class="tagline m-1">Bridges the gap between ambitious individual seeking real-world experience and startups looking for fresh talent.</p>
+  <%= link_to "Get Started", projects_path, class: "btn btn-primary w-25 m-4" %>
+</div>
+<% # student section %>
+<div class="get-start">
+    <h2>How it works for Candidate</h2>
+  <div class="column-grid">
+  <div class="apply-cards">
+    <p class="card-img"><%= image_tag("create_profile.svg") %></p>
+    <h4>Create Your Profile</h4>
+    <p>Build a standout profile showcasing your skills and experience.</p>
+  </div>
+  <div class="apply-cards">
+    <p class="card-img"><%= image_tag("find_project.png") %></p>
+    <h4>Find Project</h4>
+    <p>Explore a wide range of project opportunities tailored to your interests.</p>
+  </div>
+  <div class="apply-cards">
+    <p class="card-img"><%= image_tag("apply_project.png") %></p>
+    <h4>Apply to Gain experience </h4>
+    <p>Easily apply to internships,  connect with startups and get hired.</p>
+  </div>
+  </div>
+   <p class="button"><%= link_to "Get started as an Candidate", new_user_registration_path, class: "btn btn-primary" %></p>
+</div>
+
+<% # employer section %>
+<div class="employer">
+  <div class="get-start">
+      <h2>How it works for Employer</h2>
+    <div class="column-grid c">
+    <div class="apply-cards">
+      <p class="card-img"><%= image_tag("company_profile.png") %></p>
+      <h4>Create Company Profile</h4>
+      <p>Showcase your startup's mission, culture, and opportunities.</p>
+    </div>
+    <div class="apply-cards">
+      <p class="card-img"><%= image_tag("post_project.png") %></p>
+      <h4>Post Project Roles</h4>
+      <p>Clearly define your project roles and requirements.</p>
+    </div>
+    <div class="apply-cards">
+      <p class="card-img"><%= image_tag("select.png") %></p>
+      <h4>Review & Select Talent</h4>
+      <p>Efficiently review applications and connect with wide range of talents.</p>
+    </div>
+    </div>
+    <p class="button"><%= link_to "Get started as an Employer", new_user_registration_path, class: "btn btn-primary" %></p>
+  </div>
+</div>
+
+<% # featured projects %>
+
+<div class="featured container w-75">
+  <h2>Featured Projects</h2>
+
+<div class="column-grid">
+<% @projects.each do |project| %>
+    <div class="featured-card">
+      <div class="featured-top">
+        <h4><%= project.project_title %></h4>
+        <span class="pill"><%= project.duration %></span>
+      </div>
+      <p class="company-info">Company name | <span><%= project.location %></span></p>
+      <p class="project-brief"><%= project.project_description.truncate(50) %></p>
+      <span class="pill skills">Skills</span>
+      <p><%= link_to "View more", project_path(project), class: "btn btn-secondary mt-3" %></p>
+    </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+<% # Review section %>
+<div class="review ">
+  <h2 class="pt-5">Success Story</h2>
+  <div class="column-grid container w-75">
+    <% @feedbacks.each do |feedback| %>
+    <div class="feedback-card">
+      <span><%= image_tag("quote.svg")%></span>
+      <p class="review-comment"><%= feedback.comment %></p>
+      <div class="info">
+        <div class="user-info">
+          <span><%= cl_image_tag("feedback.application.user.photo") %></span>
+        </div>
+        <div class="project-info">
+          <p class="user-name"><%= feedback.application.user.first_name %></p>
+          <p class="project-title"><%= feedback.application.project.job_title %></p>
+        </div>
+      </div>
+      <p class="rating"> <%= "⭐" * feedback.rating %> </p>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<%# bottom CTA %>
+
+<div class="bottom-cta">
+  <h2>Ready to start your journey</h2>
+  <p>Whether you are looking to gain experience or find talent, SkillBridge is your bridge to meaningful opportunities.</p>
+  <div class="cat-button m-3">
+    <span> <%= link_to "Start as Candidte", new_user_registration_path, class:"btn btn-candidate" %></span>
+    <span><%= link_to "Start as Employer", new_user_registration_path,  class:"btn btn-secondary"%></span>
+  </div>
 </div>
