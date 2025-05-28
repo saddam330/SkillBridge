@@ -1,7 +1,10 @@
 
 <nav>
   <div class="nav-bar container">
-    <%= image_tag("logo.svg") %>
+
+      <%= link_to root_path do %>
+        <%= image_tag("logo.svg", class: "logo") %>
+      <%end%>
     <% if user_signed_in? %>
       <div class="menu-items">
         <ul>
