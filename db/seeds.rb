@@ -265,9 +265,21 @@ projects = Project.create!([
   }
 ])
 
-
-
 # Create Applications
+
+demo_user = User.create!(
+  email: "demo@skillbridge.com",
+  password: "password123"
+)
+
+5.times do
+  Application.create!(
+    status: %w[pending accepted rejected].sample,
+    user: demo_user,
+    project: projects.sample
+  )
+end
+
 applications = 20.times.map do
   Application.create!(
     status: %w[pending accepted rejected].sample,
