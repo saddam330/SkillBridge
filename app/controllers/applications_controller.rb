@@ -1,4 +1,7 @@
 class ApplicationsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_project, only: [:new, :create]
+
   def index
     @applications = current_user.applications
   end
@@ -9,14 +12,18 @@ class ApplicationsController < ApplicationController
 
   def new
     @application = Application.new
+    @user = User.all
   end
 
   def create
     @project = Project.find(params[:project_id])
-    @application = @project.applications.build(application_params)
+    @application = @project.applications.new(application_params)
+    @application.user = current_user
+    @application.status = "pending"
 
     if @application.save
-      redirect_to @project, notice: 'Application submitted successfully.'
+      redirect_to applications_path, notice: "Your application successfully submitted!"
+
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,5 +42,15 @@ class ApplicationsController < ApplicationController
 
   def application_params
     params.require(:application).permit(:user_id, :cover_letter)
+  end
+
+  private
+
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
+  def application_params
+    params.require(:application).permit(:status, :cover_letter)
   end
 end
