@@ -265,8 +265,6 @@ projects = Project.create!([
   }
 ])
 
-
-
 # # Create Applications
 # applications = 20.times.map do
 #   Application.create!(
@@ -296,6 +294,4 @@ projects = Project.create!([
 #       application: application
 #     )
 #   end
-# end
-
 puts "Seeded #{User.count} users, #{Project.count} projects, #{Application.count} applications, #{Feedback.count} feedbacks, #{Message.count} messages."

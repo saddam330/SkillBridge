@@ -9,4 +9,9 @@
       <span class="pill skills"><%= skill.strip %></span>
     <% end %>
   </div>
+  <% if applicant.user.cv.attached? %>
+     <%= link_to "Download CV", rails_blob_path(applicant.user.cv, disposition: "attachment"), target: "_blank", download: true%>
+    <% else %>
+    <h2>NO CV attached.</h2>
+  <% end %>
 <% end %>
