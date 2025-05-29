@@ -1,23 +1,13 @@
+<h3><%= link_to "View My Profile", "users/#{current_user.id}" %></h3>
+<h1>All Candidates </h1>
+<h2>--------------------------</h2>
+<% @users.each do |user| %>
+  <% if current_user.first_name != user.first_name && current_user.employer != user.employer %>
 
-    <h3><%= link_to "View My Profile", "users/#{current_user.id}" %></h3>
-
-    <h1>All Candidates </h1>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= user.email %>
 
     <h2>--------------------------</h2>
-
-<%@users.each do |user| %>
- <% if current_user.first_name != user.first_name && current_user.employee != user.employee%>
-
-
-
-    <h3><%= link_to "View Candidate Profile", "users/#{user.id}" %></h3>
-
-
-    <%= user.first_name%>
-     <%= user.last_name%>
-      <%= user.email%>
-    <h2>--------------------------</h2>
-
-   <%end%>
-
-<%end%>
+  <% end %>
+<% end %>

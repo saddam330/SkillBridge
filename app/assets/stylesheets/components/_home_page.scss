@@ -6,7 +6,7 @@ h2 {
 .get-start {
   width: 70%;
   margin: 1rem auto;
-  height: 80vh;
+  padding: 1.5rem 0;
 
   .btn{
 
@@ -16,9 +16,14 @@ h2 {
   }
 }
 
+.rew-sec{
+padding-bottom: 6rem;
+padding-top: 1.5rem;
+}
+
 .employer {
   background-color:#F9FAFB ;
-  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 .button{
@@ -27,20 +32,21 @@ h2 {
     width: 100%;
   }
 
-.featured{
-  height: 60vh;
+.featured {
+  padding-bottom: 3rem;
 }
 .review{
-  height: 60vh;
   background-color: #F9FAFB;
 }
+
 .bottom-cta {
-  height: 40vh;
   background-color: $primary;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 3rem 0;
+
 
   h2, p{
     color: white;

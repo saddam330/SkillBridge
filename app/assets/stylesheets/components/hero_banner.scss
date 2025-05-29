@@ -1,27 +1,32 @@
 .hero-banner {
-  height: 70vh;
+  padding: 7rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background: linear-gradient(180deg, #E6F0FF 0%, #F8F8F8 100%);
 
+  .hero-info {
+    width: 50%;
+    text-align: center;
+  }
 
   h1{
     font-weight: 900;
-    width: 45%;
+    width: auto;
     text-align: center;
-    margin: 0;
+    margin: 1rem 0;
   }
   .tagline {
     text-align: center;
-    width: 40%;
+    width: auto;
     font-size: 1.2rem;
   }
 .btn {
-  padding: 0.75rem;
+  padding: 0.75rem 3rem;
   border-radius: 4px;
-  
+
+
     &:hover {
       transform: scale(1.05);
     }

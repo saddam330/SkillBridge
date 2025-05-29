@@ -26,6 +26,12 @@
         "Human Resources"],
       prompt: "Select Category", input_html: { class: "w-full" } %>
 
+      <%= f.input :company_name, placeholder: "e.g. Amazon, Google", input_html: { class: "w-full" } %>
+
+      <%= f.input :company_details, placeholder: "e.g. Networked empowering help-desk. We are a Computer Hardware company founded in 2006. Unleash dot-com architectures. Our team of 361 employees is dedicated to Evolve mission-critical relationships.", input_html: { class: "w-full" } %>
+
+
+
       <%= f.input :location, placeholder: "e.g. London or West Midlands", input_html: { class: "w-full" } %>
 
       <%= f.input :duration, placeholder: "e.g. 2 weeks", input_html: { class: "w-full" } %>
@@ -42,6 +48,14 @@
 
       <div class="md:col-span-2">
         <%= f.input :job_description, as: :text, label: "Job Description", placeholder: "e.g. As a Front-End Intern, you'll help us build responsive UI components for our startup's landing page. You'll collaborate with our design team to translate Figma mockups into code, contribute to our React codebase, and participate in regular feedback sessions with the product lead.", input_html: { rows: 4, class: "w-full" } %>
+      </div>
+      <div class="md:col-span-2">
+        <%= f.input :perks, as: :text, label: "Perks", placeholder: "e.g Flexible working hours,
+         Gym membership " , input_html: { rows: 4, class: "w-full" } %>
+      </div>
+      <div class="md:col-span-2">
+        <%= f.input :learning_outcomes, as: :text, label: "Learning Outcomes", placeholder: "e.g Gain experience with agile development methodologies ,
+          Improve full-stack development skills" , input_html: { rows: 4, class: "w-full" } %>
       </div>
 
     </div>
