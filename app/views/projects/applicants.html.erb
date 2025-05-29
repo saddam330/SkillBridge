@@ -5,9 +5,8 @@
   <p><%= applicant.user.last_name %></p>
   <p><%= applicant.user.email %></p>
   <div class="skills-info">
-    <% applicant.user.skills.split(',').each do |skill| %>
+    <% (applicant.user.skills || '').split(',').each do |skill| %>
       <span class="pill skills"><%= skill.strip %></span>
     <% end %>
   </div>
-  
 <% end %>
