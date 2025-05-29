@@ -1,7 +1,7 @@
 <div class="container mt-4">
 
   <!-- Page Heading -->
-  <p class="text-muted">Home > Internship</p>
+  <%# <p class="text-muted">Home > Internship</p> %>
   <h1 class="mb-4 fw-bold fs-2">Browse Projects</h1>
 
   <%= form_with url: projects_path, method: :get, local: true do %>
@@ -28,7 +28,7 @@
 
             <!-- Location Type -->
             <h6 class="text-muted">Location type</h6>
-            <% ["Remote", "Hybrid", "On-site"].each do |loc| %>
+            <% Project.pluck(:location).uniq.each do |loc| %>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="location[]" value="<%= loc %>" onchange="this.form.submit()"
                        <%= 'checked' if params[:location]&.include?(loc) %>>
@@ -40,13 +40,15 @@
 
             <!-- Duration -->
             <h6 class="text-muted">Duration</h6>
-            <% Project.pluck(:duration).uniq.each do |val, label| %>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="duration[]" value="<%= val %>" onchange="this.form.submit()"
-                       <%= 'checked' if params[:duration]&.include?(val) %>>
-                <label class="form-check-label" for="duration-<%= val %>"><%= label %></label>
-              </div>
-            <% end %>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="1-3" name="duration[]" onchange="this.form.submit()" <%= 'checked' if params[:duration]&.include?("1-3") %>>
+              <label class="form-check-label" for="short">1 - 3 months</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="4-6" name="duration[]" onchange="this.form.submit()" <%= 'checked' if params[:duration]&.include?("4-6") %>>
+              <label class="form-check-label" for="mid">4 - 6 months</label>
+            </div>
+
 
             <hr>
 
@@ -86,7 +88,7 @@
                     <% end %>
                   </div>
                   <div class="text-end">
-                    <%= button_to "Apply", project_path(project), method: :post, class: "btn btn-primary" %>
+                    <%= link_to "View", project_path(project), method: :post, class: "btn btn-primary" %>
                   </div>
                 </div>
                 <button class="btn btn-light border-0 position-absolute bottom-0 end-0 m-2">
