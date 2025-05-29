@@ -70,9 +70,10 @@
       <p class="company-info"> <%= project.company_name %> | <span><%= project.location %></span></p>
       <p class="project-brief"><%= project.project_description.truncate(50) %></p>
         <div class="skills-info">
-          <% project.requirements.split(',')[0, 2].each do |skill| %>
+          <% project.requirements.split(',').sample(rand(2..3)).each do |skill| %>
             <span class="pill skills"><%= skill.strip %></span>
           <% end %>
+          
         </div>
       <p><%= link_to "View more", project_path(project), class: "btn btn-secondary mt-3" %></p>
     </div>

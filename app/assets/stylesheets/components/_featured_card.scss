@@ -43,7 +43,9 @@
   .skills-info{
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   span.pill.skills {
