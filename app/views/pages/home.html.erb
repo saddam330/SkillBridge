@@ -67,9 +67,13 @@
         <h4><%= project.project_title %></h4>
         <span class="pill"><%= project.duration %></span>
       </div>
-      <p class="company-info">Company name | <span><%= project.location %></span></p>
+      <p class="company-info"> <%= project.company_name %> | <span><%= project.location %></span></p>
       <p class="project-brief"><%= project.project_description.truncate(50) %></p>
-      <span class="pill skills">Skills</span>
+        <div class="skills-info">
+          <% project.requirements.split(',')[0, 2].each do |skill| %>
+            <span class="pill skills"><%= skill.strip %></span>
+          <% end %>
+        </div>
       <p><%= link_to "View more", project_path(project), class: "btn btn-secondary mt-3" %></p>
     </div>
 <% end %>

@@ -39,6 +39,12 @@
     width: auto;
   }
 
+  .skills-info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
   span.pill.skills {
   display: inline-block !important;
   width: auto !important;
