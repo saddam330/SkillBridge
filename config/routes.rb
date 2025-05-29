@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   post 'apply', on: :member
   end
 
+
 end

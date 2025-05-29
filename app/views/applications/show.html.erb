@@ -1,30 +1,67 @@
-<h1>Application Details</h1>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow rounded-4 p-4">
+        <div class="card-body">
 
-<p><strong>Project:</strong> <%= @application.project.project_title %></p>
-<p><strong>Candidate:</strong> <%= @application.user.first_name %> <%= @application.user.last_name %></p>
-<p><strong>Status:</strong>
-  <span class="badge <%= status_class(@application.status) %>">
-    <%= @application.status.titleize %>
-  </span>
-</p>
+          <h2 class="text-center mb-4">Application Details</h2>
 
-<% if current_user == @application.user %>
-  <!-- Candidate View -->
-  <h3>Status Info</h3>
-  <p>
-    Your application is currently <strong><%= @application.status %></strong>.
-    <br>
-    We’ll notify you once the employer takes action.
-  </p>
+          <p><strong>Project:</strong> <%= @application.project.project_title %></p>
+          <p><strong>Requirements:</strong> <%= @application.project.requirements %></p>
+          <p><strong>Location:</strong> <%= @application.project.location %></p>
 
-<% elsif current_user == @application.project.user %>
-  <!-- Employer View -->
-  <h3>Manage Application</h3>
+          <hr>
 
-  <% if @application.status.in?(%w[pending in\ process]) %>
-    <%= button_to "Accept", accept_application_path(@application), method: :patch, class: "btn btn-success", data: { turbo_confirm: "Are you sure you want to accept this application?" } %>
-    <%= button_to "Reject", reject_application_path(@application), method: :patch, class: "btn btn-danger", data: { turbo_confirm: "Are you sure you want to reject this application?" } %>
-  <% else %>
-    <p>This application has already been <strong><%= @application.status %></strong>.</p>
-  <% end %>
-<% end %>
+          <p><strong>Candidate:</strong> <%= @application.user.first_name %> <%= @application.user.last_name %></p>
+          <p><strong>Email:</strong> <%= @application.user.email %></p>
+          <p><strong>Skills:</strong> <%= @application.user.skills %></p>
+
+          <hr>
+
+          <% status_class = case @application.status
+            when "pending" then "badge bg-warning text-dark"
+            when "in process" then "badge bg-info text-dark"
+            when "accepted" then "badge bg-success"
+            when "rejected" then "badge bg-danger"
+            else "badge bg-secondary"
+          end %>
+
+          <p>
+            <strong>Status:</strong>
+            <span class="<%= status_class %> px-3 py-2 rounded-pill"><%= @application.status %></span>
+          </p>
+
+          <% if current_user == @application.user && @application.status.downcase == "pending" %>
+            <div class="alert alert-warning mt-3">
+              This is your application. We’ll update the status as it progresses.
+            </div>
+
+          <% elsif current_user.employer? && current_user == @application.project.user %>
+            <% if @application.status == "Pending" %>
+              <div class="mt-4">
+                <p class="fw-bold">Update Application Status:</p>
+
+                <div class="d-flex gap-3">
+                  <%= form_with model: @application, url: application_path(@application), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: "Accepted" %>
+                    <%= f.submit "Accept", class: "btn btn-success" %>
+                  <% end %>
+
+                  <%= form_with model: @application, url: application_path(@application), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: "Rejected" %>
+                    <%= f.submit "Reject", class: "btn btn-danger" %>
+                  <% end %>
+                </div>
+              </div>
+            <% else %>
+              <div class="alert alert-secondary mt-3">
+                This application has already been <strong><%= @application.status %></strong>.
+              </div>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
