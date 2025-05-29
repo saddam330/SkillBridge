@@ -18,8 +18,9 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:new, :create]
   end
 
-  resources :projects do
-  post 'apply', on: :member
-  end
+
+   get "dashboard", to: "projects#dashboard", as: :dashboard
+
+
 
 end

@@ -58,6 +58,10 @@ class ProjectsController < ApplicationController
   def destroy
   end
 
+  def dashboard
+    @projects = current_user.projects
+  end
+
   private
 
   def set_project
