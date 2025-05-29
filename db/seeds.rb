@@ -64,13 +64,16 @@ projects = Project.create!([
     project_description: "Boost rankings for client websites.",
     job_title: "SEO Specialist",
     job_description: "Conduct audits, keyword research.",
-    duration: "6 weeks",
+    duration: "2 months",
     requirements: "SEO tools experience",
     category: "Marketing",
     closing_date: Date.today + 20,
     start_date: Date.today + 30,
-    location: "New York, NY",
+
     user_id: users[14].id,
+
+    location: "On-site",
+    
     company_name: "MarketWiz",
     perks: "Office snacks, mentorship",
     learning_outcomes: "Learn performance-based marketing",
@@ -86,7 +89,7 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 25,
     start_date: Date.today + 35,
-    location: "San Francisco, CA",
+    location: "Hybrid",
     user_id: users[4].id,
     company_name: "SupportAI",
     perks: "Tech allowance",
@@ -103,7 +106,7 @@ projects = Project.create!([
     category: "Web Development",
     closing_date: Date.today + 40,
     start_date: Date.today + 50,
-    location: "London, UK",
+    location: "Hybrid",
     user_id: users[6].id,
     company_name: "ShopEase Ltd.",
     perks: "Health insurance, remote work options",
@@ -120,8 +123,12 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 35,
     start_date: Date.today + 45,
-    location: "Berlin, Germany",
+
     user_id: users[14].id,
+
+    location: "On-site",
+  
+
     company_name: "TuneMatch",
     perks: "Music subscription, flexible hours",
     learning_outcomes: "Hands-on experience with recommendation systems and user data analysis.",
@@ -154,7 +161,7 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 30,
     start_date: Date.today + 40,
-    location: "Tokyo, Japan",
+    location: "Remote",
     user_id: users[12].id,
     company_name: "SafeEarth",
     perks: "Travel allowances, research opportunities",
@@ -171,7 +178,7 @@ projects = Project.create!([
     category: "Web Development",
     closing_date: Date.today + 28,
     start_date: Date.today + 38,
-    location: "Sydney, Australia",
+    location: "Hybrid",
     user_id: users[14].id,
     company_name: "BidNow",
     perks: "Flexible schedule, team outings",
@@ -188,8 +195,11 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 45,
     start_date: Date.today + 55,
-    location: "Paris, France",
+
     user_id: users[14].id,
+
+    location: "On-site",
+   
     company_name: "StyleGenie",
     perks: "Fashion discounts, creative workshops",
     learning_outcomes: "Application of AI in the fashion industry and user personalization.",
@@ -205,8 +215,10 @@ projects = Project.create!([
     category: "Web Development",
     closing_date: Date.today + 20,
     start_date: Date.today + 30,
-    location: "Toronto, Canada",
     user_id: users[14].id,
+
+    location: "Remote",
+    
     company_name: "HelpHub",
     perks: "Community engagement, flexible hours",
     learning_outcomes: "Experience in building platforms for social good and event management.",
@@ -222,7 +234,7 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 35,
     start_date: Date.today + 45,
-    location: "Dubai, UAE",
+    location: "On-site",
     user_id: users[1].id,
     company_name: "SafeHome Tech",
     perks: "Housing allowance, health benefits",
@@ -256,7 +268,7 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 30,
     start_date: Date.today + 40,
-    location: "Los Angeles, CA",
+    location: "Hybrid",
     user_id: users[5].id,
     company_name: "FitAI",
     perks: "Gym membership, wellness programs",
@@ -265,9 +277,21 @@ projects = Project.create!([
   }
 ])
 
-
-
 # Create Applications
+
+demo_user = User.create!(
+  email: "demo@skillbridge.com",
+  password: "password123"
+)
+
+5.times do
+  Application.create!(
+    status: %w[pending accepted rejected].sample,
+    user: demo_user,
+    project: projects.sample
+  )
+end
+
 applications = 20.times.map do
   Application.create!(
     status: %w[pending accepted rejected].sample,

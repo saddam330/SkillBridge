@@ -5,4 +5,6 @@ class Application < ApplicationRecord
   has_many :feedbacks
   has_many :messages, dependent: :destroy
   validates :status, presence: true
+
+  has_one_attached :cover_letter
 end

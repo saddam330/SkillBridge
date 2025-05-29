@@ -1,2 +1,83 @@
-<h1>Applications#new</h1>
-<p>Find me in app/views/applications/new.html.erb</p>
+<!-- About the Internship -->
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card mt-4">
+        <div class="card-body text-center">
+          <h2 class="fw-bold mb-1"><%= @project.job_title %></h2>
+          <p class="text-muted mb-3"><%= @project.company_name %></p>
+          <p><%= @project.location %></p>
+
+          <h3 class="card-title">About the Project</h3>
+          <p><%= @project.project_description %></p>
+
+          <h3 class="mt-4">Job Description</h3>
+          <% @project.job_description.split(".").reject(&:blank?).each do |responsibility| %>
+            <p><%= responsibility.strip %></p>
+          <% end %>
+
+          <!-- Skills -->
+          <h3 class="mt-4">Skills</h3>
+          <div class="mb-2">
+            <strong class="text-muted">Required:</strong>
+          </div>
+          <div class="mb-3">
+            <% if @project.requirements.present? %>
+              <% @project.requirements.to_s.split(/[.,;]/).reject(&:blank?).each do |requirement| %>
+                <span class="pill me-2 mb-2"><%= requirement.strip %></span>
+              <% end %>
+            <% else %>
+              <p>No specific requirements listed.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Application Form -->
+          <div class="text-center mt-5">
+            <h3>Apply for this Position</h3>
+
+            <%= simple_form_for [@project, @application], html: { class: "text-center" } do |f| %>
+              <%= f.hidden_field :status, value: "pending" %>
+
+              <div class="my-4 d-flex justify-content-center">
+                <div class="w-65">
+                  <%= f.input :cover_letter,
+                              as: :file,
+                              required: false,
+                              label: "Cover Letter",
+                              label_html: { class: "d-none" },
+                              input_html: {
+                                class: "form-control d-none",
+                                id: "cover-letter-upload",
+                                accept: ".pdf,.doc,.docx",
+                                autocomplete: "Cover Letter",
+                                data: {
+                                  cloudinary_field: "cover_letter"
+                                }
+                              } %>
+                    <button type="button" onclick="document.getElementById('cover-letter-upload').click()" class="btn btn-dark btn-lg w-100 py-3 rounded-pill mb-3">
+                      Upload Cover Letter
+                    </button>
+
+                     <div id="upload-success" class="alert alert-success mt-2">
+                        File uploaded successfully!
+                     </div>
+
+                    <small id="file-name-display" class="text-muted d-none">Selected file: <span></span></small>
+                </div>
+              </div>
+
+              <div class="my-4 d-flex justify-content-center">
+                <%= f.button :submit, "Submit Application", class: "btn btn-primary btn-lg w-65 py-3 rounded-pill mb-3" %>
+              </div>
+            <% end %>
+          </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const uploadSuccess = document.getElementById('upload-success');
+</script>

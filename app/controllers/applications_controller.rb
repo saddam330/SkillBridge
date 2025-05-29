@@ -1,13 +1,18 @@
 class ApplicationsController < ApplicationController
 
+
   before_action :authenticate_user!
   before_action :set_application
   before_action :authorize_user!
+  before_action :set_project, only: [:new, :create]
+
 
   def index
+    @applications = current_user.applications
   end
-
+  
   def show
+
     if current_user.employer?
       @application = Application.where(project_id:  current_user.projects.pluck(:id) ).find(params[:id])
     else
@@ -17,7 +22,8 @@ class ApplicationsController < ApplicationController
 
 
   def new
-
+    @application = Application.new
+    @user = User.all
   end
 
 
@@ -30,10 +36,22 @@ class ApplicationsController < ApplicationController
       end
     else
       redirect_to root_path, alert: "Unauthorized"
+  def create
+    @project = Project.find(params[:project_id])
+    @application = @project.applications.new(application_params)
+    @application.user = current_user
+    @application.status = "pending"
+
+    if @application.save
+      redirect_to applications_path, notice: "Your application successfully submitted!"
+
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
+
 
   def set_application
     @application = Application.find(params[:id])
@@ -44,7 +62,18 @@ class ApplicationsController < ApplicationController
     unless current_user == @application.user || current_user == @application.project.user
       redirect_to root_path, alert: "Access denied."
     end
+
+  def application_params
+    params.require(:application).permit(:status, :user_id, :cover_letter)
   end
+
+  private
+
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
+
     def status_params
       params.require(:application).permit(:status)
     end
