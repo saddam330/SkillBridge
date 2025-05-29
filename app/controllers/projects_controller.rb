@@ -14,10 +14,12 @@ class ProjectsController < ApplicationController
     end
 
     if params[:duration].present?
-      if params[:duration].include?("3-6")
-        @projects = @projects.where(duration: ["3 months", "4 months" , "5 months", "6 months"])
-      elsif params[:duration].include?("1-3")
-        @projects = @projects.where(duration: ["1 months", "2 months" , "3 months"])
+      if params[:duration].include?("1-3")
+        @projects = @projects.where(duration: ["1 months", "2 months", "3 months"])
+      elsif params[:duration].include?("4-6")
+        @projects = @projects.where(duration: ["4 months" , "5 months", "6 months"])
+      else
+        "Not found.."
       end
     end
 
