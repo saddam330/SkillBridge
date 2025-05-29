@@ -10,7 +10,7 @@ class ApplicationsController < ApplicationController
   def index
     @applications = current_user.applications
   end
-  
+
   def show
 
     if current_user.employer?
@@ -62,6 +62,7 @@ class ApplicationsController < ApplicationController
     unless current_user == @application.user || current_user == @application.project.user
       redirect_to root_path, alert: "Access denied."
     end
+  end
 
   def application_params
     params.require(:application).permit(:status, :user_id, :cover_letter)
