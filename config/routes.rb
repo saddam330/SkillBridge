@@ -18,9 +18,8 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:new, :create]
   end
 
-
-   get "dashboard", to: "projects#dashboard", as: :dashboard
-
-
-
+  resources :projects do
+    get "applicants", to: "projects#applicants", as: :dashboard, on: :member
+  end
+  get "dashboard", to: "projects#dashboard", as: :dashboard
 end

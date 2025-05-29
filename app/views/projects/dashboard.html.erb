@@ -1,4 +1,26 @@
-<h2> Welcome </h2>
+<div class="featured container w-75">
+<h3 class="pr-3 pt-5"> Welcome <%= current_user.first_name %>! </h3>
+<h2>Your projects</h2>
+<div class="column-grid">
 <% @projects.each do |project| %>
-<%= project.project_title %>
+    <div class="featured-card">
+      <div class="featured-top">
+        <h4><%= project.project_title %></h4>
+        <span class="pill"><%= project.duration %></span>
+      </div>
+      <p class="company-info"> <%= project.company_name %> | <span><%= project.location %></span></p>
+      <p class="project-brief"><%= project.project_description.truncate(50) %></p>
+        <div class="skills-info">
+          <% project.requirements.split(',').sample(rand(2..3)).each do |skill| %>
+            <span class="pill skills"><%= skill.strip %></span>
+          <% end %>
+        </div>
+      <div class="button">
+        <p><%= link_to "See all application", dashboard_project_path(project), class: "btn btn-primary mt-3" %></p>
+      <p><%= link_to "View more", project_path(project), class: "btn btn-secondary" %></p>
+      </div>
+    </div>
 <% end %>
+    </div>
+  </div>
+</div>
