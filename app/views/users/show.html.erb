@@ -10,5 +10,5 @@
   <h3><%=@users.first_name%></h3>
   <h3><%=@users.last_name%></h3>
   <h3><%=@users.email%></h3>
-  <%= cl_image_tag @users.photo.key%>
+  <%= cl_image_tag @users.photo.key if @users.photo.present? %>
   <%= @users.skills%>
