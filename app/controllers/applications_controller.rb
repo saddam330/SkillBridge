@@ -2,8 +2,8 @@ class ApplicationsController < ApplicationController
 
 
   before_action :authenticate_user!
-  before_action :set_application
-  before_action :authorize_user!
+  # before_action :set_application
+  # before_action :authorize_user!
   before_action :set_project, only: [:new, :create]
 
 
@@ -36,6 +36,8 @@ class ApplicationsController < ApplicationController
       end
     else
       redirect_to root_path, alert: "Unauthorized"
+    end
+  end
   def create
     @project = Project.find(params[:project_id])
     @application = @project.applications.new(application_params)
@@ -53,16 +55,16 @@ class ApplicationsController < ApplicationController
   private
 
 
-  def set_application
-    @application = Application.find(params[:id])
-  end
+  # def set_application
+  #   @application = Application.find(params[:id])
+  # end
 
-  def authorize_user!
+  # def authorize_user!
 
-    unless current_user == @application.user || current_user == @application.project.user
-      redirect_to root_path, alert: "Access denied."
-    end
-  end
+  #   unless current_user == @application.user || current_user == @application.project.user
+  #     redirect_to root_path, alert: "Access denied."
+  #   end
+  # end
 
   def application_params
     params.require(:application).permit(:status, :user_id, :cover_letter)
@@ -74,8 +76,7 @@ class ApplicationsController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
-
-    def status_params
+  def status_params
       params.require(:application).permit(:status)
     end
 end
