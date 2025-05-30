@@ -7,10 +7,15 @@
   .user-img {
     width: 15%;
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .avatar {
+
+    .user-profile {
       width: 100%;
       border-radius: 25%;
+
     }
   }
 

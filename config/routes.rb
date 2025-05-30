@@ -21,10 +21,7 @@ get '/download_cv_pdf', to: 'users#download_pdf'
   resources :projects do
     get "applicants", to: "projects#applicants", as: :dashboard, on: :member
   end
-<<<<<<< HEAD
   get "dashboard", to: "projects#dashboard", as: :dashboard
-=======
 
 
->>>>>>> master
 end
