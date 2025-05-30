@@ -52,7 +52,9 @@
           <% end %>
 
           <div class="mt-4">
-            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+            <% unless current_user.employer? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -112,7 +114,9 @@
       <!-- Text at the bottom and the Apply Button -->
       <div class="mb-4 text-center d-md-block d-none">
         <p class="text-muted">Interested in this opportunity? Don't wait too long!</p>
-        <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+        <% unless current_user.employer? %>
+          <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+        <% end %>
       </div>
 
       <!-- Additional mobile-only bottom fixed section -->
@@ -120,7 +124,9 @@
         <div class="container">
           <div class="text-center">
             <p class="text-muted mb-2">Interested in this opportunity? Don't wait too long!</p>
-            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
+            <% unless current_user.employer? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -238,7 +244,9 @@
           <% end %>
 
           <div class="mt-4">
-            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+            <% unless current_user.employer? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>4
+            <% end %>
           </div>
         </div>
       </div>
@@ -298,7 +306,9 @@
       <!-- Text at the bottom and the Apply Button -->
       <div class="mb-4 text-center d-md-block d-none">
         <p class="text-muted">Interested in this opportunity? Don't wait too long!</p>
-        <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+        <% unless current_user.employer? %>
+          <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+        <% end %>
       </div>
 
       <!-- Additional mobile-only section -->
@@ -306,7 +316,9 @@
         <div class="container">
           <div class="text-center">
             <p class="text-muted mb-2">Interested in this opportunity? Don't wait too long!</p>
-            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
+            <% unless current_user.employer? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
+            <% end %>
           </div>
         </div>
       </div>
