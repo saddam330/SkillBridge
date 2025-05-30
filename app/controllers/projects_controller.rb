@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_employer, only: [:new, :create]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -63,6 +64,12 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def ensure_employer
+    unless current_user.employer?
+      redirect_to root_path, alert: "Only employers can post new projects."
+    end
   end
 
   def apply

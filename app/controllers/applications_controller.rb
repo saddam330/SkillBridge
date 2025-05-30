@@ -4,6 +4,7 @@ class ApplicationsController < ApplicationController
   before_action :authenticate_user!
   # before_action :set_application
   # before_action :authorize_user!
+  before_action :ensure_non_employer, only: [:create]
   before_action :set_project, only: [:new, :create]
 
 
@@ -70,7 +71,11 @@ class ApplicationsController < ApplicationController
     params.require(:application).permit(:status, :user_id, :cover_letter)
   end
 
-  private
+  def ensure_non_employer
+    if current_user.employer?
+      redirect_to root_path, alert: "Employers are not allowed to apply for projects."
+    end
+  end
 
   def set_project
     @project = Project.find(params[:project_id])
@@ -78,5 +83,5 @@ class ApplicationsController < ApplicationController
 
   def status_params
       params.require(:application).permit(:status)
-    end
+  end
 end
