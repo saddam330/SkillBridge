@@ -1,14 +1,39 @@
-<h3><%= link_to "Go to homepage", "/" %></h3>
-<h1>My Details</h1>
 
-<h1>Welcome, <%= @users.first_name%> <%= @users.last_name %></h1>
-<% if @users.employer%>
-<h3>Role: employer</h3>
+<h4><%= link_to "Go to back", "/" %></h4>
+
+<div class="profile-pic">
+
+<h1>My Profile</h1>
+
+<%= cl_image_tag @user.photo.key, class:"image",  height: 300, width: 300, crop: :fill if @user.photo.present? %>
+</div>
+<div class="content">
+
+<% if @user.employer%>
+  <p>Role: employer</p>
 <%else%>
-<h3>Role: Student</h3>
+  <p>Role: Student</p>
+  <p>Skills: <%=@user.skills%></p>
+
+  <p>First Name: <%=@user.first_name%></p>
+  <p>Last Name: <%=@user.last_name%></p>
+  <p>Email: <%=@user.email%></p>
+
 <%end%>
-  <h3><%=@users.first_name%></h3>
-  <h3><%=@users.last_name%></h3>
-  <h3><%=@users.email%></h3>
-  <%= cl_image_tag @users.photo.key if @users.photo.present? %>
-  <%= @users.skills%>
+
+</div>
+<div class="cv">
+
+
+<% if @user.cv.present? %>
+
+  <h2>CV</h2>
+
+   <%= 5.times do |i| %>
+      <%= cl_image_tag @user.cv.key, format: "png", page:i+1, width:400, height:600 %>
+      <%end%>
+
+<% else %>
+  <p>No CV uploaded yet.</p>
+<% end %>
+</div>
