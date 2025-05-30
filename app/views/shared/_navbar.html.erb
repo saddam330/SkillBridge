@@ -1,37 +1,38 @@
+
 <nav>
   <div class="nav-bar container">
-    <%= link_to root_path do %>
-      <%= image_tag("logo.svg", class: "logo") %>
-    <%end%>
+
+      <%= link_to root_path do %>
+        <%= image_tag("logo.svg", class: "logo") %>
+      <%end%>
     <% if user_signed_in? %>
       <div class="menu-items">
         <ul>
           <li><%= link_to "Projects", projects_path %></li>
+          <li><%= link_to "Messages", "#" %></li>
           <% if !current_user.employer %>
-             <li class="nav-item dropdown">
-              <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", alt: "dropdown menu", id: "navbarDropdown", data: { "bs-toggle": "dropdown" } %>
-              <% else %>
-                <%= image_tag "https://s3.amazonaws.com/37assets/svn/765-default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { "bs-toggle": "dropdown" }%>
-              <% end %>
+
+            <li class="nav-item dropdown">
+              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+              </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
-                <%= link_to "My Applications", applications_path(current_user), class: "dropdown-item" %>
                 <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item btn btn-link p-0 border-0", style: "background: none; text-decoration: none;" %>
               </div>
             </li>
-            <% else %>
+          <% else %>
             <li class="nav-item dropdown">
+              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.photo.attached?  %>
-                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", alt: "dropdown menu", id: "navbarDropdown2", data: { "bs-toggle": "dropdown" }, role: "button" %>
+                <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
               <% else %>
-                <%= image_tag "https://s3.amazonaws.com/37assets/svn/765-default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown2", data: { "bs-toggle": "dropdown" }, role: "button" %>
-              <% end %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
-                <%= link_to "My Dashboard", dashboard_path, class: "dropdown-item" %>
-                <% if current_user.employer? %>
-                  <%= link_to "Post Project", new_project_path, class: "dropdown-item" %>
+                <%= cl_image_tag ("find_project.png"), class: "avatar", alt: "dropdown menu" %>
                 <% end %>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "My Dashboard", dashboard_path, class: "dropdown-item" %>
+                <%= link_to "Post Project", new_project_path, class: "dropdown-item" %>
                 <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item btn btn-link p-0 border-0", style: "background: none; text-decoration: none;" %>
               </div>
             </li>
