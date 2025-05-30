@@ -73,7 +73,11 @@ projects = Project.create!([
     user_id: users[14].id,
 
     location: "On-site",
+<<<<<<< HEAD
+    user_id: users[0].id,
+=======
     
+>>>>>>> master
     company_name: "MarketWiz",
     perks: "Office snacks, mentorship",
     learning_outcomes: "Learn performance-based marketing",
@@ -90,7 +94,7 @@ projects = Project.create!([
     closing_date: Date.today + 25,
     start_date: Date.today + 35,
     location: "Hybrid",
-    user_id: users[4].id,
+    user_id: users[0].id,
     company_name: "SupportAI",
     perks: "Tech allowance",
     learning_outcomes: "Hands-on NLP and ML development",
@@ -107,7 +111,7 @@ projects = Project.create!([
     closing_date: Date.today + 40,
     start_date: Date.today + 50,
     location: "Hybrid",
-    user_id: users[6].id,
+    user_id: users[0].id,
     company_name: "ShopEase Ltd.",
     perks: "Health insurance, remote work options",
     learning_outcomes: "Experience in building full-stack applications and integrating third-party services.",
@@ -277,6 +281,16 @@ projects = Project.create!([
   }
 ])
 
+<<<<<<< HEAD
+# # Create Applications
+# applications = 20.times.map do
+#   Application.create!(
+#     status: %w[pending accepted rejected].sample,
+#     user: users.sample,
+#     project: projects.sample
+#   )
+# end
+=======
 # Create Applications
 
 demo_user = User.create!(
@@ -299,27 +313,26 @@ applications = 20.times.map do
     project: projects.sample
   )
 end
+>>>>>>> master
 
 # Create Feedbacks
-applications.each do |application|
-  if [true, false].sample
-    Feedback.create!(
-      comment: Faker::Lorem.sentence(word_count: 10),
-      rating: rand(1.0..5.0).round(1),
-      application: application
-    )
-  end
-end
+# applications.each do |application|
+#   if [true, false].sample
+#     Feedback.create!(
+#       comment: Faker::Lorem.sentence(word_count: 10),
+#       rating: rand(1.0..5.0).round(1),
+#       application: application
+#     )
+#   end
+# end
 
-# Create Messages
-applications.each do |application|
-  rand(1..3).times do
-    Message.create!(
-      content: Faker::Lorem.sentence(word_count: 8),
-      user: users.sample,
-      application: application
-    )
-  end
-end
-
+# # Create Messages
+# applications.each do |application|
+#   rand(1..3).times do
+#     Message.create!(
+#       content: Faker::Lorem.sentence(word_count: 8),
+#       user: users.sample,
+#       application: application
+#     )
+#   end
 puts "Seeded #{User.count} users, #{Project.count} projects, #{Application.count} applications, #{Feedback.count} feedbacks, #{Message.count} messages."

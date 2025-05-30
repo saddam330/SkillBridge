@@ -19,8 +19,9 @@ get '/download_cv_pdf', to: 'users#download_pdf'
   end
 
   resources :projects do
-  post 'apply', on: :member
+    get "applicants", to: "projects#applicants", as: :dashboard, on: :member
   end
+  get "dashboard", to: "projects#dashboard", as: :dashboard
 
 
 end

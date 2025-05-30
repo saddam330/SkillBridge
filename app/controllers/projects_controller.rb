@@ -59,6 +59,15 @@ class ProjectsController < ApplicationController
   def destroy
   end
 
+  def dashboard
+    @projects = current_user.projects
+  end
+
+  def applicants
+    @project = Project.find(params[:id])
+    @applicants = @project.applications
+  end
+
   private
 
   def set_project
