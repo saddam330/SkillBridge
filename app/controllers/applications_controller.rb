@@ -2,7 +2,7 @@ class ApplicationsController < ApplicationController
 
 
   before_action :authenticate_user!
-  # before_action :set_application
+  before_action :set_application, only: [:update]
   # before_action :authorize_user!
   before_action :ensure_non_employer, only: [:create]
   before_action :set_project, only: [:new, :create]
@@ -56,9 +56,9 @@ class ApplicationsController < ApplicationController
   private
 
 
-  # def set_application
-  #   @application = Application.find(params[:id])
-  # end
+  def set_application
+    @application = Application.find(params[:id])
+  end
 
   # def authorize_user!
 

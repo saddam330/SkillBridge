@@ -9,7 +9,6 @@
       <div class="menu-items">
         <ul>
           <li><%= link_to "Projects", projects_path %></li>
-          <li><%= link_to "Messages", "#" %></li>
           <% if !current_user.employer %>
 
             <li class="nav-item dropdown">
@@ -19,9 +18,11 @@
                <% else %>
                <%= image_tag "https://s3.amazonaws.com/37assets/svn/765-default-avatar.png", class: "avatar" %>
                <% end %>
+
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
+                <%= link_to "My Applications", applications_path(current_user), class: "dropdown-item" %>
                 <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item btn btn-link p-0 border-0", style: "background: none; text-decoration: none;" %>
               </div>
             </li>

@@ -18,7 +18,7 @@
 
           <hr>
 
-          <% status_class = case @application.status
+          <% status_class = case @application.status.downcase
             when "pending" then "badge bg-warning text-dark"
             when "in process" then "badge bg-info text-dark"
             when "accepted" then "badge bg-success"
@@ -30,14 +30,13 @@
             <strong>Status:</strong>
             <span class="<%= status_class %> px-3 py-2 rounded-pill"><%= @application.status %></span>
           </p>
-
           <% if current_user == @application.user && @application.status.downcase == "pending" %>
             <div class="alert alert-warning mt-3">
               This is your application. We’ll update the status as it progresses.
             </div>
 
           <% elsif current_user.employer? && current_user == @application.project.user %>
-            <% if @application.status == "Pending" %>
+            <% if @application.status == "pending" %>
               <div class="mt-4">
                 <p class="fw-bold">Update Application Status:</p>
 
