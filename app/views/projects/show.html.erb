@@ -1,6 +1,4 @@
-<div class="container mt-3">
-
-
+<div class="container mt-3 mb-5 pb-5 d-md-none">
   <div class="row">
 
     <!-- Main Content -->
@@ -54,7 +52,7 @@
           <% end %>
 
           <div class="mt-4">
-            <button class="btn btn-primary">Apply Now</button>
+            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
           </div>
         </div>
       </div>
@@ -78,7 +76,7 @@
           <div class="mb-3">
             <% if @project.requirements.present? %>
               <% @project.requirements.to_s.split(/[.,;]/).reject(&:blank?).each do |requirement| %>
-                <span class="badge bg-primary me-2 mb-2"><%= requirement.strip %></span>
+                <span class="pill me-2 mb-2"><%= requirement.strip %></span>
               <% end %>
             <% else %>
               <p>No specific requirements listed.</p>
@@ -112,10 +110,19 @@
       </div>
 <br>
       <!-- Text at the bottom and the Apply Button -->
+      <div class="mb-4 text-center d-md-block d-none">
+        <p class="text-muted">Interested in this opportunity? Don't wait too long!</p>
+        <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+      </div>
 
-      <div class="mb-4 text-center">
-        <p class="text-muted">Interesting in this opportunity? Don't wait too long!</p>
-        <button class="btn btn-primary">Apply Now</button>
+      <!-- Additional mobile-only bottom fixed section -->
+      <div class="d-md-none fixed-bottom bg-white py-3 border-top">
+        <div class="container">
+          <div class="text-center">
+            <p class="text-muted mb-2">Interested in this opportunity? Don't wait too long!</p>
+            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -177,7 +184,188 @@
   </div>
 </div>
 
-  <!-- REMOVE Home Breadcrumb I will remove after REMOVE-->
-  <div class="mb-3">
-    <%= link_to "Back to All Projects", projects_path %>
+<div class="container mt-3 d-none d-md-block">
+  <div class="row">
+
+    <!-- Main Content -->
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <h1> <%= @project.project_title %></h1>
+            <div>
+              <button class="btn btn-outline-dark btn-sm me-2">
+                <i class="bi bi-bookmark"></i> Save
+              </button>
+            </div>
+          </div>
+
+          <h5 class="card-title-2">Company Name:</h5>
+          <p class="text-muted"><%= @project.company_name %></p>
+
+          <h5 class="card-title-2">Contact E-mail:</h5>
+          <p class="text-muted mb-0"><%= @project.user.email %></p>
+
+          <!-- Project Details -->
+          <div class="d-flex align-items-center my-3">
+            <div class="me-4 d-flex align-items-center" style="width: 200px;">
+              <i class="bi me-1"></i>
+              <span><strong>Location:</strong> <%= @project.location %></span>
+            </div>
+            <div class="me-4 d-flex align-items-center">
+              <i class="bi me-1"></i>
+              <span><strong>Duration:</strong> <%= @project.duration %></span>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center my-3">
+            <div class="me-4 d-flex align-items-center" style="width: 200px;">
+              <i class="bi me-1"></i>
+              <span><strong>Start:</strong> <%= @project.start_date.strftime("%B %d, %Y") %></span>
+            </div>
+            <div class="me-4 d-flex align-items-center">
+              <i class="bi me-1"></i>
+              <span><strong>Salary:</strong> £1 or Less 😩</span>
+            </div>
+          </div>
+
+          <% if @project.created_at %>
+            <div class="mt-2 mb-3">
+              <span class="badge bg-light text-dark border">Posted <%= time_ago_in_words(@project.created_at) %> ago</span>
+              <span class="badge bg-light text-dark border ms-2"><%= rand(10..50) %> applicants</span>
+            </div>
+          <% end %>
+
+          <div class="mt-4">
+            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- About the Internship -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <h3 class="card-title">About the Project</h3>
+          <p><%= @project.project_description %></p>
+
+          <h3 class="mt-4">Job Description</h3>
+            <% @project.job_description.split(".").reject(&:blank?).each do |responsibility| %>
+              <%= responsibility.strip %>
+            <% end %>
+
+          <!-- Skills -->
+          <h3 class="mt-4">Skills</h3>
+          <div class="mb-2">
+            <strong class="text-muted">Required:</strong>
+          </div>
+          <div class="mb-3">
+            <% if @project.requirements.present? %>
+              <% @project.requirements.to_s.split(/[.,;]/).reject(&:blank?).each do |requirement| %>
+                <span class="pill me-2 mb-2"><%= requirement.strip %></span>
+              <% end %>
+            <% else %>
+              <p>No specific requirements listed.</p>
+            <% end %>
+          </div>
+
+         <!-- Perks -->
+          <h3 class="mt-4">Perks</h3>
+          <% if @project.perks.present? %>
+            <ul>
+              <% @project.perks.split(",").each do |perk| %>
+                <li><%= perk.strip %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>No perks specified for this project.</p>
+          <% end %>
+
+          <!-- Learning Outcomes -->
+          <h3 class="mt-4">Learning Outcomes</h3>
+          <% if @project.learning_outcomes.present? %>
+            <ul>
+              <% @project.learning_outcomes.split(",").each do |outcome| %>
+                <li><%= outcome.strip %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>No learning outcomes specified for this project.</p>
+          <% end %>
+        </div>
+      </div>
+<br>
+      <!-- Text at the bottom and the Apply Button -->
+      <div class="mb-4 text-center d-md-block d-none">
+        <p class="text-muted">Interested in this opportunity? Don't wait too long!</p>
+        <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+      </div>
+
+      <!-- Additional mobile-only section -->
+      <div class="d-md-none fixed-bottom bg-white py-3 border-top">
+        <div class="container">
+          <div class="text-center">
+            <p class="text-muted mb-2">Interested in this opportunity? Don't wait too long!</p>
+            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title"> About <%= @project.company_name %> company</h4>
+           <p>
+            <%= @project.company_details %>
+           </p>
+          <a href="#" class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-globe"></i> Visit website
+          </a>
+        </div>
+      </div>
+
+      <!-- Similar Projects -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">Similar Projects</h4>
+
+          <% Project.where.not(id: @project.id).limit(3).each do |similar_project| %>
+            <div class="card mb-3">
+              <div class="card-body py-2 px-3">
+                <h6 class="mb-1"><%= link_to similar_project.project_title, project_path(similar_project), class: "text-decoration-none" %></h6>
+                <p class="text-muted mb-0 small"><%= similar_project.user.email.split('@').first %> • <%= similar_project.location %></p>
+              </div>
+            </div>
+          <% end %>
+
+          <%= link_to "View More", projects_path, class: "btn btn-outline-secondary btn-sm w-100 mt-2" %>
+        </div>
+      </div>
+
+      <!-- Tips for Applicants -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">
+            <i class="bi bi-lightbulb text-warning me-2"></i>
+            Tips for Applicants
+          </h4>
+          <ol class="ps-3">
+            <li class="mb-2">
+              <strong>Tailor your application</strong> to highlight relevant skills and projects.
+            </li>
+            <li class="mb-2">
+              <strong>Be specific about why</strong> you're interested in this particular project.
+            </li>
+            <li>
+              <strong>Showcase any relevant side projects</strong> or coursework in your portfolio.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

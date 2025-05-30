@@ -22,4 +22,5 @@ get '/download_cv_pdf', to: 'users#download_pdf'
   post 'apply', on: :member
   end
 
+
 end
