@@ -12,16 +12,15 @@
   .featured-top{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
+    align-items: self-start;
     h4{
       margin: 0;
+      width: 70%;
     }
 
     span{
-      width: auto;
       color: #4AD03B;
-      font-size: 0.75rem;
+      font-size: 0.5rem;
 
     }
   }

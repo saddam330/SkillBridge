@@ -27,7 +27,9 @@
     <p>Easily apply to internships,  connect with startups and get hired.</p>
   </div>
   </div>
-   <p class="button"><%= link_to "Get started as an Candidate", new_user_registration_path, class: "btn btn-primary" %></p>
+   <% if !user_signed_in? %>
+    <p class="button"><%= link_to "Get started as an Candidate", new_user_registration_path, class: "btn btn-primary" %></p>
+  <% end %>
 </div>
 
 <% # employer section %>
@@ -51,7 +53,9 @@
       <p>Efficiently review applications and connect with wide range of talents.</p>
     </div>
     </div>
-    <p class="button"><%= link_to "Get started as an Employer", new_user_registration_path, class: "btn btn-primary" %></p>
+    <% if !user_signed_in? %>
+      <p class="button"><%= link_to "Get started as an Employer", new_user_registration_path, class: "btn btn-primary" %></p>
+    <% end %>
   </div>
 </div>
 
@@ -73,7 +77,7 @@
           <% project.requirements.split(',').sample(rand(2..3)).each do |skill| %>
             <span class="pill skills"><%= skill.strip %></span>
           <% end %>
-          
+
         </div>
       <p><%= link_to "View more", project_path(project), class: "btn btn-secondary mt-3" %></p>
     </div>
@@ -113,7 +117,7 @@
   <h2>Ready to start your journey</h2>
   <p>Whether you are looking to gain experience or find talent, SkillBridge is your bridge to meaningful opportunities.</p>
   <div class="cat-button m-3">
-    <span> <%= link_to "Start as Candidte", new_user_registration_path, class:"btn btn-candidate" %></span>
+    <span> <%= link_to "Start as Candidate", new_user_registration_path, class:"btn btn-candidate" %></span>
     <span><%= link_to "Start as Employer", new_user_registration_path,  class:"btn btn-secondary"%></span>
   </div>
 </div>
