@@ -1,6 +1,6 @@
 
 .featured-card {
-  
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 1.5rem;
   width: 100%;
   border-radius: 8px;
@@ -12,16 +12,15 @@
   .featured-top{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
+    align-items: self-start;
     h4{
       margin: 0;
+      width: 70%;
     }
 
     span{
-      width: auto;
       color: #4AD03B;
-      font-size: 0.75rem;
+      font-size: 0.5rem;
 
     }
   }
