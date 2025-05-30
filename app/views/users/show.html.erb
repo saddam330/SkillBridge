@@ -1,6 +1,6 @@
 
 <h4><%= link_to "Go to back", "/" %></h4>
-<div class="main">
+
 <div class="profile-pic">
 
 <h1>My Profile</h1>
@@ -18,16 +18,22 @@
   <p>First Name: <%=@user.first_name%></p>
   <p>Last Name: <%=@user.last_name%></p>
   <p>Email: <%=@user.email%></p>
-  <!--<p>CV: <%= cl_image_tag @user.cv.key,  height: 300, width: 300, crop: :fill if @user.cv.present? %>-->
-  <% if @user.cv.attached?  %>
-    <%= cl_image_tag @user.cv.key, format: "jpg", page: 1, width:500, crop: "scale" %>
 
-  <%end%>
 <%end%>
- File: <%=@user.cv.filename%>
 
-<% if @user.cv.attached? %>
-  <%= link_to 'Download My CV', rails_blob_path(@user.cv, disposition: "attachment"), target: "_blank" %>
+</div>
+<div class="cv">
+
+
+<% if @user.cv.present? %>
+
+  <h2>CV</h2>
+
+   <%= 5.times do |i| %>
+      <%= cl_image_tag @user.cv.key, format: "png", page:i+1, width:400, height:600 %>
+      <%end%>
+
+<% else %>
+  <p>No CV uploaded yet.</p>
 <% end %>
 </div>
-<div>

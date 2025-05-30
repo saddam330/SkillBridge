@@ -1,15 +1,8 @@
-.main{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-}
 
 .profile-pic{
-  margin-right:5rem;
-  position:relative;
-  top:5rem;
 
+  width:40rem;
+  margin: 0 auto;
 }
 h4 {
   margin-top: 1.5rem;
@@ -24,5 +17,19 @@ h1{
 }
 .content{
  position:relative;
-  top:17rem;
+  bottom:13rem;
+  left:33rem;
+  width:40rem;
+  margin: 0 auto;
+}
+h2{
+  position:relative;
+  bottom:5rem;
+
+}
+.cv{
+  position: relative;
+  bottom:5rem;
+  right:3rem;
+  text-align: center;
 }

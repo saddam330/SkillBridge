@@ -1,7 +1,7 @@
 <div class="form container">
   <h2>Sign up</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, local: true, url: registration_path(resource_name))   do |f| %>
     <%= f.error_notification %>
 
   <div class="form-inputs" >
@@ -37,9 +37,11 @@
       <%= f.input :photo,  as: :file,
                   required: false,
                   input_html: { autocomplete: "photo" }%>
+      <h4>Note:Only pdf docs allowed</h4>
       <%= f.input :cv,
-                  required: false,
-                  input_html: { autocomplete: "CV" }%>
+                  accept: ".pdf",
+                  required: false
+                 %>
 
                     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
