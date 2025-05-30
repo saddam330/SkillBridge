@@ -33,7 +33,7 @@ users = User.create!([
   { first_name: "Leo", last_name: "Davis", email: "leo@example.com", password: "password", employer: false, skills: "Game Dev, Unity" },
   { first_name: "Mia", last_name: "Patel", email: "mia@example.com", password: "password", employer: false, skills: "Data Analysis, Excel" },
   { first_name: "Nathan", last_name: "White", email: "nathan@example.com", password: "password", employer: true, skills: "Software Architecture" },
-  { first_name: "Olivia", last_name: "Scott", email: "olivia@example.com", password: "password", employer: false, skills: "Content Writing, Social Media" },
+  { first_name: "Olivia", last_name: "Scott", email: "olivia@example.com", password: "password", employer: true, skills: "Content Writing, Social Media" },
   { first_name: "Paul", last_name: "Taylor", email: "paul@example.com", password: "password", employer: false, skills: "Cybersecurity" },
   { first_name: "Quinn", last_name: "Evans", email: "quinn@example.com", password: "password", employer: true, skills: "Logistics, Operations" },
   { first_name: "Rachel", last_name: "Moore", email: "rachel@example.com", password: "password", employer: false, skills: "Video Editing" },
@@ -69,8 +69,15 @@ projects = Project.create!([
     category: "Marketing",
     closing_date: Date.today + 20,
     start_date: Date.today + 30,
+
+    user_id: users[14].id,
+
     location: "On-site",
+<<<<<<< HEAD
     user_id: users[0].id,
+=======
+    
+>>>>>>> master
     company_name: "MarketWiz",
     perks: "Office snacks, mentorship",
     learning_outcomes: "Learn performance-based marketing",
@@ -120,8 +127,12 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 35,
     start_date: Date.today + 45,
+
+    user_id: users[14].id,
+
     location: "On-site",
-    user_id: users[8].id,
+  
+
     company_name: "TuneMatch",
     perks: "Music subscription, flexible hours",
     learning_outcomes: "Hands-on experience with recommendation systems and user data analysis.",
@@ -188,8 +199,11 @@ projects = Project.create!([
     category: "Artificial Intelligence",
     closing_date: Date.today + 45,
     start_date: Date.today + 55,
+
+    user_id: users[14].id,
+
     location: "On-site",
-    user_id: users[16].id,
+   
     company_name: "StyleGenie",
     perks: "Fashion discounts, creative workshops",
     learning_outcomes: "Application of AI in the fashion industry and user personalization.",
@@ -205,8 +219,10 @@ projects = Project.create!([
     category: "Web Development",
     closing_date: Date.today + 20,
     start_date: Date.today + 30,
+    user_id: users[14].id,
+
     location: "Remote",
-    user_id: users[18].id,
+    
     company_name: "HelpHub",
     perks: "Community engagement, flexible hours",
     learning_outcomes: "Experience in building platforms for social good and event management.",
@@ -265,6 +281,7 @@ projects = Project.create!([
   }
 ])
 
+<<<<<<< HEAD
 # # Create Applications
 # applications = 20.times.map do
 #   Application.create!(
@@ -273,6 +290,30 @@ projects = Project.create!([
 #     project: projects.sample
 #   )
 # end
+=======
+# Create Applications
+
+demo_user = User.create!(
+  email: "demo@skillbridge.com",
+  password: "password123"
+)
+
+5.times do
+  Application.create!(
+    status: %w[pending accepted rejected].sample,
+    user: demo_user,
+    project: projects.sample
+  )
+end
+
+applications = 20.times.map do
+  Application.create!(
+    status: %w[pending accepted rejected].sample,
+    user: users.sample,
+    project: projects.sample
+  )
+end
+>>>>>>> master
 
 # Create Feedbacks
 # applications.each do |application|
