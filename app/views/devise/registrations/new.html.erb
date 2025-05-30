@@ -5,6 +5,11 @@
     <%= f.error_notification %>
 
   <div class="form-inputs" >
+    <%= f.input :employer,
+                  collection:[["yes", true], ["no", false]], prompt: "Select your Role",
+                  required: true,
+                  input_html: { value:false, autocomplete: "employee" }%>
+
   <%= f.input :first_name,
                   required: true,
                   autofocus: true,
@@ -24,20 +29,18 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :employer,
-                  collection:[["yes", true], ["no", false]], prompt: "Select your Role",
-                  required: true,
-                  input_html: { value:false, autocomplete: "employee" }%>
-      <h5><b>Note:</b> Section below for students only </h5>
+
       <%= f.input :skills,
                   required: false,
-                  input_html: { autocomplete: "photo" }%>
+                  autofocus: true,
+                  input_html: { autocomplete: "skills" }%>
       <%= f.input :photo,  as: :file,
                   required: false,
                   input_html: { autocomplete: "photo" }%>
-      <%= f.input :cv,  as: :file,
+      <%= f.input :cv,
                   required: false,
                   input_html: { autocomplete: "CV" }%>
+
                     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
     </div>
