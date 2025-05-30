@@ -307,23 +307,24 @@ end
 
 
 # Create Feedbacks
-# applications.each do |application|
-#   if [true, false].sample
-#     Feedback.create!(
-#       comment: Faker::Lorem.sentence(word_count: 10),
-#       rating: rand(1.0..5.0).round(1),
-#       application: application
-#     )
-#   end
-# end
+applications.each do |application|
+  if [true, false].sample
+    Feedback.create!(
+      comment: Faker::Lorem.sentence(word_count: 10),
+      rating: rand(1.0..5.0).round(1),
+      application: application
+    )
+  end
+end
 
-# # Create Messages
-# applications.each do |application|
-#   rand(1..3).times do
-#     Message.create!(
-#       content: Faker::Lorem.sentence(word_count: 8),
-#       user: users.sample,
-#       application: application
-#     )
-#   end
+# Create Messages
+applications.each do |application|
+  rand(1..3).times do
+    Message.create!(
+      content: Faker::Lorem.sentence(word_count: 8),
+      user: users.sample,
+      application: application
+    )
+  end
+end
 puts "Seeded #{User.count} users, #{Project.count} projects, #{Application.count} applications, #{Feedback.count} feedbacks, #{Message.count} messages."

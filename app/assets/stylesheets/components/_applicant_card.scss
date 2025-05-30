@@ -3,6 +3,11 @@
   display: flex;
   justify-content: space-between ;
   border-radius: 8px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  text-decoration: none;
+  color: $text;
 
   .user-img {
     width: 15%;

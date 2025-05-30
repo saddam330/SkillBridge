@@ -1,39 +1,42 @@
 <h2>Applicantons on <%= @project.project_title %></h2>
-<div class="applicant-card container w-75">
-  <% @applicants.each do |applicant| %>
-  <%= link_to  application_path(applicant) do %>
-    <div class="user-img">
-        <%= cl_image_tag(applicant.user.photo.key, class: "user-profile") %>
-    </div>
-    <div class="user-details">
-      <div class="user-info">
-        <p><%= applicant.user.first_name %> <%= applicant.user.last_name %></p>
-        <p><%= applicant.user.email %></p>
-      </div>
-      <div class="skills-info">
-        <% (applicant.user.skills || '').split(',').each do |skill| %>
-          <span class="pill skills"><%= skill.strip %></span>
-        <% end %>
-      </div>
-    </div>
-    <div class="buttons">
-      <div class="cv-btn">
-        <% if applicant.user.cv.attached? %>
-        <%= link_to "Download PDF", url_for(applicant.user.cv), download: true %>
-          <span><%= link_to "Download CV", rails_blob_path(applicant.user.cv, disposition: "attachment", only_path: true), class: "btn btn-primary",target: "_blank", download: true%></span>
+  <div class= "container w-75">
+    <% @applicants.each do |applicant| %>
+      <%= link_to  application_path(applicant),class: "applicant-card" do %>
+      <div class="user-img">
+        <% if applicant.user.photo.attached? %>
+          <%= cl_image_tag(applicant.user.photo.key, class: "user-profile") %>
         <% else %>
-          <span>No CV attached</span>
+          <%= image_tag("select.png", class:"user-profile") %>
         <% end %>
       </div>
-      <div class="cover-letter-btn">
-        <% if applicant.cover_letter.attached? %>
-          <span><%= link_to "Download Cover Letter", rails_blob_path(applicant.cover_letter, disposition: "attachment", only_path: true), class: "btn btn-primary", target: "_blank", download: true%></span>
-        <% else %>
-          <span>No Cover Letter Attached</span>
-        <% end %>
+      <div class="user-details">
+        <div class="user-info">
+          <h4><%= applicant.user.first_name %> <%= applicant.user.last_name %></h4>
+          <p><%= applicant.user.email %></p>
+        </div>
+        <div class="skills-info">
+          <% (applicant.user.skills || '').split(',').each do |skill| %>
+            <span class="pill skills"><%= skill.strip %></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="cv-btn">
+          <% if applicant.user.cv.attached? %>
+          <%= link_to "Download PDF", url_for(applicant.user.cv), download: true %>
+            <span><%= link_to "Download CV", rails_blob_path(applicant.user.cv, disposition: "attachment", only_path: true), class: "btn btn-primary",target: "_blank", download: true%></span>
+          <% else %>
+            <span>No CV attached</span>
+          <% end %>
+        </div>
+        <div class="cover-letter-btn">
+          <% if applicant.cover_letter.attached? %>
+            <span><%= link_to "Download Cover Letter", rails_blob_path(applicant.cover_letter, disposition: "attachment", only_path: true), class: "btn btn-primary", target: "_blank", download: true%></span>
+          <% else %>
+            <span>No Cover Letter Attached</span>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
     <% end %>
-  <% end %>
-    </div>
-   </div>
-
 </div>
