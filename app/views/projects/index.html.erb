@@ -27,7 +27,7 @@
           <div class="card-body">
 
             <!-- Location Type -->
-            <h6 class="text-muted mt-2">Location type</h6>
+            <h6 class="text-muted mt-2">Work mood</h6>
             <% Project.pluck(:location).uniq.each do |loc| %>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="location[]" value="<%= loc %>" onchange="this.form.submit()"
@@ -95,9 +95,20 @@
                     <div class="d-flex flex-column justify-content-between align-items-end h-100">
 
                       <!-- Save Job Icon (top right) -->
-                      <button class="btn btn-outline-light border-0 p-0 mb-auto">
-                        <i class="bi bi-bookmark-fill text-dark fs-5"></i>
-                      </button>
+                      <% saved_ids = session[:saved_project_ids] || [] %>
+
+                    <div class="position-absolute top-0 end-0 m-2">
+                      <% if saved_ids.include?(project.id) %>
+                        <%= button_to unsave_project_path(project), method: :delete, class: "btn btn-light p-1 border-0" do %>
+                          <i class="bi bi-bookmark-fill text-dark fs-5"></i>
+                        <% end %>
+                      <% else %>
+                        <%= button_to save_project_path(project), method: :post, class: "btn btn-light p-1 border-0" do %>
+                          <i class="bi bi-bookmark text-dark fs-5"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+
 
                       <!-- View Button (bottom right) -->
                       <%= link_to "View", project_path(project), method: :post,

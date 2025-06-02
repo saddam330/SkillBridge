@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order(created_at: :desc)
 
     if params[:query].present?
       @projects = Project.search_by_title_and_description(params[:query].capitalize)
@@ -68,6 +68,24 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @applicants = @project.applications
   end
+
+  def save
+    session[:saved_project_ids] ||= []
+    session[:saved_project_ids] << params[:id].to_i unless session[:saved_project_ids].include?(params[:id].to_i)
+    redirect_back fallback_location: projects_path
+  end
+
+  def unsave
+    session[:saved_project_ids] ||= []
+    session[:saved_project_ids].delete(params[:id].to_i)
+    redirect_back fallback_location: projects_path
+  end
+
+  def saved
+    saved_ids = session[:saved_project_ids] || []
+    @saved_projects = Project.where(id: saved_ids)
+  end
+
 
   private
 
