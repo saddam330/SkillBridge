@@ -30,7 +30,7 @@
               <% if current_user.photo.attached?  %>
                 <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
               <% else %>
-                <%= image_tag "find_project.png", class: "avatar", alt: "dropdown menu" %>
+                <%= image_tag "avatar.svg", class: "avatar", alt: "dropdown menu" %>
               <% end %>
               </a>
 
