@@ -19,8 +19,8 @@
           <hr>
 
           <% status_class = case @application.status.downcase
-            when "pending" then "badge bg-warning text-dark"
-            when "in process" then "badge bg-info text-dark"
+            when "pending" then "badge   bg-warning text-white"
+            when "in process" then "badge bg-info text-white"
             when "accepted" then "badge bg-success"
             when "rejected" then "badge bg-danger"
             else "badge bg-secondary"
@@ -43,12 +43,12 @@
                 <div class="d-flex gap-3">
                   <%= form_with model: @application, url: application_path(@application), method: :patch do |f| %>
                     <%= f.hidden_field :status, value: "Accepted" %>
-                    <%= f.submit "Accept", class: "btn btn-success" %>
+                    <%= f.submit "Accept", class: "btn btn-success rounded-4", style: "color: white;" %>
                   <% end %>
 
                   <%= form_with model: @application, url: application_path(@application), method: :patch do |f| %>
                     <%= f.hidden_field :status, value: "Rejected" %>
-                    <%= f.submit "Reject", class: "btn btn-danger" %>
+                    <%= f.submit "Reject", class: "btn btn-danger rounded-4", style: "color: white;" %>
                   <% end %>
                 </div>
               </div>
