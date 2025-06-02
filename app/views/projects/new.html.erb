@@ -32,13 +32,13 @@
 
 
 
-      <%= f.input :location, placeholder: "e.g. London or West Midlands", input_html: { class: "w-full" } %>
+      <%= f.input :location, label: "Work Mode", collection:["Remote", "Hybrid", "On-site"], prompt: "Select Work Mode", input_html: { class: "w-full" } %>
 
       <%= f.input :duration, placeholder: "e.g. 2 weeks", input_html: { class: "w-full" } %>
 
-      <%= f.input :start_date, as: :date, input_html: { class: "w-full" } %>
+      <%= f.input :start_date, as: :date, label: "Project Start Date", input_html: { class: "w-full" } %>
 
-      <%= f.input :closing_date, as: :date, input_html: { class: "w-full" } %>
+      <%= f.input :closing_date, as: :date, label: "Application Deadline", input_html: { class: "w-full" } %>
 
       <%= f.input :requirements, label: "Required Skills", placeholder: "e.g. React, Figma", input_html: { class: "w-full" } %>
 
