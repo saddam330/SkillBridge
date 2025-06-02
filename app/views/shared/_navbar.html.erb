@@ -16,7 +16,7 @@
                 <% if current_user.photo.attached? %>
                   <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
                 <% else %>
-                <%= image_tag("avatar.svg") %>
+                <%= image_tag"avatar.svg", class: "avatar", alt: "dropdown menu"%>
                 <% end %>
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -26,15 +26,14 @@
             </li>
           <% else %>
             <li class="nav-item dropdown">
+              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.photo.attached?  %>
-              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
-              </a>
               <% else %>
-              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= cl_image_tag ("find_project.png"), class: "avatar", alt: "dropdown menu" %>
-              </a>
+                <%= image_tag "find_project.png", class: "avatar", alt: "dropdown menu" %>
               <% end %>
+              </a>
+
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My Dashboard", dashboard_path, class: "dropdown-item" %>
                 <%= link_to "Post Project", new_project_path, class: "dropdown-item" %>
