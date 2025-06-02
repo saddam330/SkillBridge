@@ -311,15 +311,6 @@ applications.each do |application|
   end
 end
 
-# Create Messages
-applications.each do |application|
-  rand(1..3).times do
-    Message.create!(
-      content: Faker::Lorem.sentence(word_count: 8),
-      user: users.sample,
-      application: application
-    )
-  end
-end
+
 
 puts "Seeded #{User.count} users, #{Project.count} projects, #{Application.count} applications, #{Feedback.count} feedbacks, #{Message.count} messages."

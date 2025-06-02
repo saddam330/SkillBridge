@@ -44,7 +44,7 @@
               <%= f.hidden_field :status, value: "pending" %>
 
               <div class="my-4 d-flex justify-content-center">
-                <div class="w-65">
+                <div class="w-65" data-controller="notification-alert">
                   <%= f.input :cover_letter,
                               as: :file,
                               required: false,
@@ -55,19 +55,21 @@
                                 id: "cover-letter-upload",
                                 accept: ".pdf,.doc,.docx",
                                 autocomplete: "Cover Letter",
+                                onChange: "document.querySelector('#successful').classList.remove('d-none')",
                                 data: {
                                   cloudinary_field: "cover_letter"
                                 }
                               } %>
-                    <button type="button" onclick="document.getElementById('cover-letter-upload').click()" class="btn btn-dark btn-lg w-100 py-3 rounded-pill mb-3">
+                    <button type="button" onclick="document.getElementById('cover-letter-upload').click()" class="btn btn-dark btn-lg w-65 py-3 rounded-pill mb-3">
                       Upload Cover Letter
                     </button>
-
-                     <div id="upload-success" class="alert alert-success mt-2">
+                      <div class="d-none alert alert-success mt-2 alert-dismissible fade show m-1" id="successful" role="alert">
                         File uploaded successfully!
-                     </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                      </div>
 
-                    <small id="file-name-display" class="text-muted d-none">Selected file: <span></span></small>
+                    <%# <small id="file-name-display" class="text-muted">Selected file: <span></span></small> %>
                 </div>
               </div>
 
@@ -76,8 +78,3 @@
               </div>
             <% end %>
           </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const uploadSuccess = document.getElementById('upload-success');
-</script>

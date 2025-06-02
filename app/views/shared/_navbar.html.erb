@@ -14,10 +14,11 @@
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
-                  <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
-                <% else %>
-                  <%= image_tag "https://images.pexels.com/photos/32131630/pexels-photo-32131630/free-photo-of-scenic-road-through-canadian-rockies-in-jasper.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" %>
-                <% end %>
+                 <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+               <% else %>
+               <%= image_tag "https://s3.amazonaws.com/37assets/svn/765-default-avatar.png", class: "avatar" %>
+               <% end %>
+
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
