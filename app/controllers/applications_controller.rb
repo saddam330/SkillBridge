@@ -7,7 +7,6 @@ class ApplicationsController < ApplicationController
   before_action :ensure_non_employer, only: [:create]
   before_action :set_project, only: [:new, :create]
 
-
   def index
     @applications = current_user.applications
   end
@@ -15,18 +14,17 @@ class ApplicationsController < ApplicationController
   def show
 
     if current_user.employer?
-      @application = Application.where(project_id:  current_user.projects.pluck(:id) ).find(params[:id])
+      @application = Application.where(project_id: current_user.projects.pluck(:id)).find(params[:id])
     else
       @application = current_user.applications.find(params[:id])
     end
   end
 
-
   def new
+
     @application = Application.new
     @user = User.all
   end
-
 
   def update
     if current_user.employer? && @application.project.user == current_user
@@ -68,7 +66,7 @@ class ApplicationsController < ApplicationController
   # end
 
   def application_params
-    params.require(:application).permit(:status, :user_id, :cover_letter)
+    params.require(:application).permit(:status, :user_id, :cover_letter, :cv, :skills)
   end
 
   def ensure_non_employer

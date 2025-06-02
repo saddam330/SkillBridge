@@ -19,26 +19,26 @@ User.delete_all
 
 # Create Users
 users = User.create!([
-  { first_name: "Alice", last_name: "Johnson", email: "alice@example.com", password: "password", employer: true, skills: "Leadership, Project Management" },
-  { first_name: "Bob", last_name: "Smith", email: "bob@example.com", password: "password", employer: false, skills: "Ruby, JavaScript, React" },
-  { first_name: "Carla", last_name: "Nguyen", email: "carla@example.com", password: "password", employer: true, skills: "Marketing, SEO" },
-  { first_name: "David", last_name: "Lee", email: "david@example.com", password: "password", employer: false, skills: "Python, Machine Learning" },
-  { first_name: "Emma", last_name: "Williams", email: "emma@example.com", password: "password", employer: false, skills: "UI/UX, Figma" },
-  { first_name: "Frank", last_name: "Garcia", email: "frank@example.com", password: "password", employer: true, skills: "Sales, Business Development" },
-  { first_name: "Grace", last_name: "Kim", email: "grace@example.com", password: "password", employer: false, skills: "Product Design, Illustration" },
-  { first_name: "Henry", last_name: "Miller", email: "henry@example.com", password: "password", employer: false, skills: "DevOps, AWS" },
-  { first_name: "Isabella", last_name: "Lopez", email: "isabella@example.com", password: "password", employer: true, skills: "Finance, Strategy" },
-  { first_name: "Jack", last_name: "Brown", email: "jack@example.com", password: "password", employer: false, skills: "Mobile Dev, Swift" },
-  { first_name: "Kathy", last_name: "Chen", email: "kathy@example.com", password: "password", employer: true, skills: "HR, Recruiting" },
-  { first_name: "Leo", last_name: "Davis", email: "leo@example.com", password: "password", employer: false, skills: "Game Dev, Unity" },
-  { first_name: "Mia", last_name: "Patel", email: "mia@example.com", password: "password", employer: false, skills: "Data Analysis, Excel" },
-  { first_name: "Nathan", last_name: "White", email: "nathan@example.com", password: "password", employer: true, skills: "Software Architecture" },
-  { first_name: "Olivia", last_name: "Scott", email: "olivia@example.com", password: "password", employer: true, skills: "Content Writing, Social Media" },
-  { first_name: "Paul", last_name: "Taylor", email: "paul@example.com", password: "password", employer: false, skills: "Cybersecurity" },
-  { first_name: "Quinn", last_name: "Evans", email: "quinn@example.com", password: "password", employer: true, skills: "Logistics, Operations" },
-  { first_name: "Rachel", last_name: "Moore", email: "rachel@example.com", password: "password", employer: false, skills: "Video Editing" },
-  { first_name: "Sam", last_name: "Anderson", email: "sam@example.com", password: "password", employer: true, skills: "Legal, Compliance" },
-  { first_name: "Tina", last_name: "Martin", email: "tina@example.com", password: "password", employer: false, skills: "Illustration, Animation" }
+  { first_name: "Alice", last_name: "Johnson", email: "alice@example.com", password: "password", employer: true },
+  { first_name: "Bob", last_name: "Smith", email: "bob@example.com", password: "password", employer: false },
+  { first_name: "Carla", last_name: "Nguyen", email: "carla@example.com", password: "password", employer: true },
+  { first_name: "David", last_name: "Lee", email: "david@example.com", password: "password", employer: false },
+  { first_name: "Emma", last_name: "Williams", email: "emma@example.com", password: "password", employer: false },
+  { first_name: "Frank", last_name: "Garcia", email: "frank@example.com", password: "password", employer: true },
+  { first_name: "Grace", last_name: "Kim", email: "grace@example.com", password: "password", employer: false },
+  { first_name: "Henry", last_name: "Miller", email: "henry@example.com", password: "password", employer: false },
+  { first_name: "Isabella", last_name: "Lopez", email: "isabella@example.com", password: "password", employer: true },
+  { first_name: "Jack", last_name: "Brown", email: "jack@example.com", password: "password", employer: false },
+  { first_name: "Kathy", last_name: "Chen", email: "kathy@example.com", password: "password", employer: true },
+  { first_name: "Leo", last_name: "Davis", email: "leo@example.com", password: "password", employer: false },
+  { first_name: "Mia", last_name: "Patel", email: "mia@example.com", password: "password", employer: false },
+  { first_name: "Nathan", last_name: "White", email: "nathan@example.com", password: "password", employer: true },
+  { first_name: "Olivia", last_name: "Scott", email: "olivia@example.com", password: "password", employer: true },
+  { first_name: "Paul", last_name: "Taylor", email: "paul@example.com", password: "password", employer: false },
+  { first_name: "Quinn", last_name: "Evans", email: "quinn@example.com", password: "password", employer: true },
+  { first_name: "Rachel", last_name: "Moore", email: "rachel@example.com", password: "password", employer: false },
+  { first_name: "Sam", last_name: "Anderson", email: "sam@example.com", password: "password", employer: true },
+  { first_name: "Tina", last_name: "Martin", email: "tina@example.com", password: "password", employer: false }
 ])
 # Create Projects
 projects = Project.create!([

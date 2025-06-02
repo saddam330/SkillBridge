@@ -16,15 +16,14 @@
             <p><%= applicant.user.email %></p>
           </div>
           <div class="skills-info">
-            <% (applicant.user.skills || '').split(',').each do |skill| %>
+            <% (applicant.skills || '').split(',').each do |skill| %>
               <span class="pill skills"><%= skill.strip %></span>
             <% end %>
           </div>
         </div>
         <div class="buttons">
           <div class="cv-btn">
-            <% if applicant.user.cv.attached? %>
-              <%= link_to "Download PDF", url_for(applicant.user.cv), download: true %>
+            <% if applicant.cv.attached? %>
               <span><%= link_to "Download CV", rails_blob_path(applicant.cv, disposition: "attachment", only_path: true), class: "btn btn-primary",target: "_blank", download: true%></span>
             <% else %>
               <span>No CV attached</span>

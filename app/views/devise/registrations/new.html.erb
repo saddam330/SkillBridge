@@ -30,20 +30,10 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
 
-      <%= f.input :skills,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "skills" }%>
       <%= f.input :photo,  as: :file,
                   required: false,
                   input_html: { autocomplete: "photo" }%>
-      <h4>Note:Only pdf docs allowed</h4>
-      <%= f.input :cv,
-                  accept: ".pdf",
-                  required: false
-                 %>
 
-                    <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
     </div>
   <% end %>
