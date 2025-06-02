@@ -25,7 +25,7 @@
           <div class="cv-btn">
             <% if applicant.user.cv.attached? %>
               <%= link_to "Download PDF", url_for(applicant.user.cv), download: true %>
-              <span><%= link_to "Download CV", rails_blob_path(applicant.user.cv, disposition: "attachment", only_path: true), class: "btn btn-primary",target: "_blank", download: true%></span>
+              <span><%= link_to "Download CV", rails_blob_path(applicant.cv, disposition: "attachment", only_path: true), class: "btn btn-primary",target: "_blank", download: true%></span>
             <% else %>
               <span>No CV attached</span>
             <% end %>
