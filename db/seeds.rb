@@ -40,9 +40,6 @@ users = User.create!([
   { first_name: "Sam", last_name: "Anderson", email: "sam@example.com", password: "password", employer: true, skills: "Legal, Compliance" },
   { first_name: "Tina", last_name: "Martin", email: "tina@example.com", password: "password", employer: false, skills: "Illustration, Animation" }
 ])
-# Filter only employer users
-employer_users = users.select(&:employer)
-
 # Create Projects
 projects = Project.create!([
   {
@@ -56,7 +53,7 @@ projects = Project.create!([
     closing_date: Date.today + 30,
     start_date: Date.today + 45,
     location: "Remote",
-    user_id: employer_users.sample.id,
+    user_id: users[0].id,
     company_name: "TechNova Inc.",
     perks: "Flexible hours, remote work",
     learning_outcomes: "Gain real-world frontend experience",
@@ -73,7 +70,7 @@ projects = Project.create!([
     closing_date: Date.today + 20,
     start_date: Date.today + 30,
 
-    user_id: employer_users.sample.id,
+    user_id: users[14].id,
 
     location: "On-site",
 
@@ -93,8 +90,7 @@ projects = Project.create!([
     closing_date: Date.today + 25,
     start_date: Date.today + 35,
     location: "Hybrid",
-    user_id: employer_users.sample.id,
-
+    user_id: users[4].id,
     company_name: "SupportAI",
     perks: "Tech allowance",
     learning_outcomes: "Hands-on NLP and ML development",
@@ -111,9 +107,7 @@ projects = Project.create!([
     closing_date: Date.today + 40,
     start_date: Date.today + 50,
     location: "Hybrid",
-
-    user_id: employer_users.sample.id,
-
+    user_id: users[6].id,
     company_name: "ShopEase Ltd.",
     perks: "Health insurance, remote work options",
     learning_outcomes: "Experience in building full-stack applications and integrating third-party services.",
@@ -130,7 +124,8 @@ projects = Project.create!([
     closing_date: Date.today + 35,
     start_date: Date.today + 45,
 
-    user_id: employer_users.sample.id,
+    user_id: users[14].id,
+
     location: "On-site",
 
 
@@ -150,7 +145,7 @@ projects = Project.create!([
     closing_date: Date.today + 25,
     start_date: Date.today + 35,
     location: "Remote",
-    user_id: employer_users.sample.id,
+    user_id: users[10].id,
     company_name: "FinanceBuddy",
     perks: "Stock options, remote work",
     learning_outcomes: "Experience in financial data handling and backend development.",
@@ -167,7 +162,7 @@ projects = Project.create!([
     closing_date: Date.today + 30,
     start_date: Date.today + 40,
     location: "Remote",
-    user_id: employer_users.sample.id,
+    user_id: users[12].id,
     company_name: "SafeEarth",
     perks: "Travel allowances, research opportunities",
     learning_outcomes: "Application of AI in environmental science and disaster management.",
@@ -184,7 +179,7 @@ projects = Project.create!([
     closing_date: Date.today + 28,
     start_date: Date.today + 38,
     location: "Hybrid",
-    user_id: employer_users.sample.id,
+    user_id: users[14].id,
     company_name: "BidNow",
     perks: "Flexible schedule, team outings",
     learning_outcomes: "Experience in real-time web applications and user engagement strategies.",
@@ -201,7 +196,7 @@ projects = Project.create!([
     closing_date: Date.today + 45,
     start_date: Date.today + 55,
 
-    user_id: employer_users.sample.id,
+    user_id: users[14].id,
 
     location: "On-site",
 
@@ -220,7 +215,7 @@ projects = Project.create!([
     category: "Web Development",
     closing_date: Date.today + 20,
     start_date: Date.today + 30,
-    user_id: employer_users.sample.id,
+    user_id: users[14].id,
 
     location: "Remote",
 
@@ -240,7 +235,7 @@ projects = Project.create!([
     closing_date: Date.today + 35,
     start_date: Date.today + 45,
     location: "On-site",
-    user_id: employer_users.sample.id,
+    user_id: users[1].id,
     company_name: "SafeHome Tech",
     perks: "Housing allowance, health benefits",
     learning_outcomes: "Application of AI in safety and surveillance systems.",
@@ -257,7 +252,7 @@ projects = Project.create!([
     closing_date: Date.today + 15,
     start_date: Date.today + 25,
     location: "Remote",
-    user_id: employer_users.sample.id,
+    user_id: users[3].id,
     company_name: "Freelance Project",
     perks: "Flexible deadlines, creative freedom",
     learning_outcomes: "Experience in personal branding and content management systems.",
@@ -274,7 +269,7 @@ projects = Project.create!([
     closing_date: Date.today + 30,
     start_date: Date.today + 40,
     location: "Hybrid",
-    user_id: employer_users.sample.id,
+    user_id: users[5].id,
     company_name: "FitAI",
     perks: "Gym membership, wellness programs",
     learning_outcomes: "Application of AI in health and fitness domains.",
@@ -282,48 +277,49 @@ projects = Project.create!([
   }
 ])
 
-
-demo_user = User.create!(
-  first_name: "Demo",
-  last_name: "User",
-  email: "demo@skillbridge.com",
-  password: "password123",
-  employer: false,
-  skills: "Demoing, Exploring"
-)
-
 # Create Applications
 
+demo_user = User.create!(
+  email: "demo@skillbridge.com",
+  password: "password123"
+)
 
-non_employer_users = users.reject(&:employer)
-
-applications = 20.times.map do
+5.times do
   Application.create!(
     status: %w[pending accepted rejected].sample,
-    user: non_employer_users.sample,
+    user: demo_user,
     project: projects.sample
   )
 end
 
+applications = 20.times.map do
+  Application.create!(
+    status: %w[pending accepted rejected].sample,
+    user: users.sample,
+    project: projects.sample
+  )
+end
 
 # Create Feedbacks
-# applications.each do |application|
-#   if [true, false].sample
-#     Feedback.create!(
-#       comment: Faker::Lorem.sentence(word_count: 10),
-#       rating: rand(1.0..5.0).round(1),
-#       application: application
-#     )
-#   end
-# end
+applications.each do |application|
+  if [true, false].sample
+    Feedback.create!(
+      comment: Faker::Lorem.sentence(word_count: 10),
+      rating: rand(1.0..5.0).round(1),
+      application: application
+    )
+  end
+end
 
-# # Create Messages
-# applications.each do |application|
-#   rand(1..3).times do
-#     Message.create!(
-#       content: Faker::Lorem.sentence(word_count: 8),
-#       user: users.sample,
-#       application: application
-#     )
-#   end
+# Create Messages
+applications.each do |application|
+  rand(1..3).times do
+    Message.create!(
+      content: Faker::Lorem.sentence(word_count: 8),
+      user: users.sample,
+      application: application
+    )
+  end
+end
+
 puts "Seeded #{User.count} users, #{Project.count} projects, #{Application.count} applications, #{Feedback.count} feedbacks, #{Message.count} messages."
