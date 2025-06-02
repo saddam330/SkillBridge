@@ -14,13 +14,12 @@
 
           <p><strong>Candidate:</strong> <%= @application.user.first_name %> <%= @application.user.last_name %></p>
           <p><strong>Email:</strong> <%= @application.user.email %></p>
-          <p><strong>Skills:</strong> <%= @application.user.skills %></p>
+          <p><strong>Skills:</strong> <%= @application.skills %></p>
 
           <hr>
 
           <% status_class = case @application.status.downcase
             when "pending" then "badge   bg-warning text-white"
-            when "in process" then "badge bg-info text-white"
             when "accepted" then "badge bg-success"
             when "rejected" then "badge bg-danger"
             else "badge bg-secondary"

@@ -36,45 +36,74 @@
   </div>
 </div>
 
-<!-- Application Form -->
-          <div class="text-center mt-5">
-            <h3>Apply for this Position</h3>
 
-            <%= simple_form_for [@project, @application], html: { class: "text-center" } do |f| %>
+
+<!-- Application Form -->
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm bg-white">
+        <div class="card-body p-4">
+          <% if current_user.applications.exists?(project_id: @project.id) %>
+            <h3 class="card-title text-center mb-4">You have already applied for this job.</h3>
+          <% else %>
+            <h3 class="card-title text-center mb-4">Apply for this Position</h3>
+          <% end %>
+
+          <% if current_user.applications.exists?(project_id: @project.id) %>
+            <div class="alert alert-info text-center p-4 mb-0">
+              <i class="bi bi-info-circle-fill me-2"></i>
+              You have already applied for this job.
+            </div>
+          <% else %>
+            <%= simple_form_for [@project, @application], html: { class: "text-start" } do |f| %>
               <%= f.hidden_field :status, value: "pending" %>
 
-              <div class="my-4 d-flex justify-content-center">
-                <div class="w-65" data-controller="notification-alert">
+              <div class="form-inputs">
+                <p class="text-muted mb-4 small text-center">Please upload PDF files only</p>
+
+                <div class="mb-4">
                   <%= f.input :cover_letter,
                               as: :file,
-                              required: false,
+                              required: true,
                               label: "Cover Letter",
-                              label_html: { class: "d-none" },
+                              label_html: { class: "fw-medium" },
+                              hint_html: { class: "text-muted small mt-1" },
                               input_html: {
-                                class: "form-control d-none",
-                                id: "cover-letter-upload",
+                                class: "form-control form-control-lg",
                                 accept: ".pdf,.doc,.docx",
-                                autocomplete: "Cover Letter",
-                                onChange: "document.querySelector('#successful').classList.remove('d-none')",
-                                data: {
-                                  cloudinary_field: "cover_letter"
-                                }
+                                data: { cloudinary_field: "cover_letter" }
                               } %>
-                    <button type="button" onclick="document.getElementById('cover-letter-upload').click()" class="btn btn-dark btn-lg w-65 py-3 rounded-pill mb-3">
-                      Upload Cover Letter
-                    </button>
-                      <div class="d-none alert alert-success mt-2 alert-dismissible fade show m-1" id="successful" role="alert">
-                        File uploaded successfully!
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                      </div>
+                </div>
 
-                    <%# <small id="file-name-display" class="text-muted">Selected file: <span></span></small> %>
+                <div class="mb-4">
+                  <%= f.input :cv,
+                              as: :file,
+                              required: true,
+                              label: "CV/Resume",
+                              label_html: { class: "fw-medium" },
+                              hint_html: { class: "text-muted small mt-1" },
+                              input_html: {
+                                class: "form-control form-control-lg",
+                                accept: ".pdf,.doc,.docx",
+                                data: { cloudinary_field: "cv" }
+                              } %>
+                </div>
+                <div class="mb-4">
+                  <%= f.input :skills,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "skills" }%>
+                </div>
+
+                <div class="form-actions text-center mt-5">
+                  <%= f.button :submit, "Submit Application", class: "btn btn-primary btn-lg px-5 py-2 rounded-pill" %>
                 </div>
               </div>
-
-              <div class="my-4 d-flex justify-content-center">
-                <%= f.button :submit, "Submit Application", class: "btn btn-primary btn-lg w-65 py-3 rounded-pill mb-3" %>
-              </div>
             <% end %>
-          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
