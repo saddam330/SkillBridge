@@ -7,10 +7,11 @@
     <% if user_signed_in? %>
       <div class="menu-items">
         <ul>
-          <li><%= link_to "Projects", projects_path %></li>
-          <li><%= link_to "Messages", "#" %></li>
-          <% if !current_user.employer %>
 
+
+          <% if !current_user.employer %>
+            <li><%= link_to "Projects", projects_path %></li>
+            <li><%= link_to "Messages", "#" %></li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
@@ -25,18 +26,19 @@
               </div>
             </li>
           <% else %>
+          <li><%= link_to " Post Projects", new_project_path %></li>
+          <li><%= link_to "Messages", "#" %></li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.photo.attached?  %>
                 <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
               <% else %>
-                <%= image_tag "avatar.svg", class: "avatar", alt: "dropdown menu" %>
+                <%= image_tag "find_project.png", class: "avatar", alt: "dropdown menu" %>
               <% end %>
               </a>
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My Dashboard", dashboard_path, class: "dropdown-item" %>
-                <%= link_to "Post Project", new_project_path, class: "dropdown-item" %>
                 <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item btn btn-link p-0 border-0", style: "background: none; text-decoration: none;" %>
               </div>
             </li>
