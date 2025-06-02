@@ -23,5 +23,4 @@ get '/download_cv_pdf', to: 'users#download_pdf'
   end
   get "dashboard", to: "projects#dashboard", as: :dashboard
 
-
 end

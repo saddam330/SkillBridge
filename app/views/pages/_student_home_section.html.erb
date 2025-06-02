@@ -1,0 +1,24 @@
+<% # student section %>
+  <div class="get-start">
+      <h2>How it works for Candidate</h2>
+    <div class="column-grid">
+    <div class="apply-cards">
+      <p class="card-img"><%= image_tag("create_profile.svg") %></p>
+      <h4>Create Your Profile</h4>
+      <p>Build a standout profile showcasing your skills and experience.</p>
+    </div>
+    <div class="apply-cards">
+      <p class="card-img"><%= image_tag("find_project.png") %></p>
+      <h4>Find Project</h4>
+      <p>Explore a wide range of project opportunities tailored to your interests.</p>
+    </div>
+    <div class="apply-cards">
+      <p class="card-img"><%= image_tag("apply_project.png") %></p>
+      <h4>Apply to Gain experience </h4>
+      <p>Easily apply to internships,  connect with startups and get hired.</p>
+    </div>
+    </div>
+    <% if !user_signed_in? %>
+      <p class="button"><%= link_to "Get started as an Candidate", new_user_registration_path, class: "btn btn-primary" %></p>
+    <% end %>
+  </div>
