@@ -284,32 +284,33 @@ demo_user = User.create!(
   password: "password123"
 )
 
-5.times do
-  Application.create!(
-    status: %w[pending accepted rejected].sample,
-    user: demo_user,
-    project: projects.sample
-  )
-end
+# 5.times do
+#   Application.create!(
+#     status: %w[pending accepted rejected].sample,
+#     user: demo_user,
+#     project: projects.sample,
+#     skills:
+#   )
+# end
 
-applications = 20.times.map do
-  Application.create!(
-    status: %w[pending accepted rejected].sample,
-    user: users.sample,
-    project: projects.sample
-  )
-end
+# applications = 20.times.map do
+#   Application.create!(
+#     status: %w[pending accepted rejected].sample,
+#     user: users.sample,
+#     project: projects.sample
+#   )
+# end
 
-# Create Feedbacks
-applications.each do |application|
-  if [true, false].sample
-    Feedback.create!(
-      comment: Faker::Lorem.sentence(word_count: 10),
-      rating: rand(1.0..5.0).round(1),
-      application: application
-    )
-  end
-end
+# # Create Feedbacks
+# applications.each do |application|
+#   if [true, false].sample
+#     Feedback.create!(
+#       comment: Faker::Lorem.sentence(word_count: 10),
+#       rating: rand(1.0..5.0).round(1),
+#       application: application
+#     )
+#   end
+# end
 
 
 
