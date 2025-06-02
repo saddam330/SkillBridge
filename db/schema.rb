@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_28_162426) do
     t.bigint "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "skills"
     t.index ["project_id"], name: "index_applications_on_project_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
   end
@@ -103,7 +104,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_28_162426) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "employer"
-    t.text "skills"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -228,11 +228,11 @@
           <div class="d-flex align-items-center my-3">
             <div class="me-4 d-flex align-items-center" style="width: 200px;">
               <i class="bi me-1"></i>
-              <span><strong>Start:</strong> <%= @project.start_date.strftime("%B %d, %Y") %></span>
+              <span><strong>Start date:</strong> <%= @project.start_date.strftime("%B %d, %Y") %></span>
             </div>
             <div class="me-4 d-flex align-items-center">
               <i class="bi me-1"></i>
-              <span><strong>Salary:</strong> £1 or Less 😩</span>
+              <span><strong>Application Deadline:</strong> <%= @project.closing_date.strftime("%B %d, %Y") %></span>
             </div>
           </div>
 

@@ -15,7 +15,7 @@
           <p><%= applicant.user.email %></p>
         </div>
         <div class="skills-info">
-          <% (applicant.user.skills || '').split(',').each do |skill| %>
+          <% (applicant.skills || '').split(',').each do |skill| %>
             <span class="pill skills"><%= skill.strip %></span>
           <% end %>
         </div>
