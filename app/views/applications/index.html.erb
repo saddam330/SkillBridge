@@ -16,12 +16,12 @@
         <td><%= application.project.project_title %></td>
 
         <td>
-          <% status_class = case application.status
+          <% status_class = case application.status.downcase
             when "accepted" then "badge bg-success"
             when "rejected" then "badge bg-danger"
             else "badge bg-warning"
           end %>
-          <span class="<%= status_class %>"><%= application.status.capitalize %></span>
+          <span class="<%= status_class %>"><%= application.status %></span>
         </td>
 
         <td><%= application.created_at.strftime("%B %d, %Y") %></td>
