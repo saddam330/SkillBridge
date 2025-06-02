@@ -1,30 +1,35 @@
-<h1 class="mb-4">Saved Projects</h1>
+<div class="container w-75">
+<h1 class="mb-4"><strong>Saved Projects</strong></h1>
 
-<% if @saved_projects.any? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Project</th>
-        <th>Category</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @saved_projects.each do |project| %>
+  <% if @saved_projects.any? %>
+    <div class="bg-dark rounded-4 shadow-sm p-4">
+      <table class="table mb-0">
         <tr>
-          <td><%= project.project_title %></td>
-          <td><%= project.category %></td>
-          <td>
-            <%= link_to "View More", project_path(project), class: "btn btn-sm btn-primary px-4 rounded-3 mt-auto" %>
-            <%= button_to unsave_project_path(project), method: :delete, class: "btn border-0 p-0 bg-transparent" do %>
-                <i class="bi bi-bookmark-fill text-dark fs-5"></i>
-            <% end %>
-
-          </td>
+          <th><strong>Project</strong></th>
+          <th><strong>Category</strong></th>
+          <th><strong>Actions</strong></th>
+          <th> </th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No saved projects yet.</p>
-<% end %>
+      </thead>
+      <tbody>
+        <% @saved_projects.each do |project| %>
+          <tr>
+            <td><%= project.project_title %></td>
+            <td><%= project.category %></td>
+            <td>
+              <%= link_to "Details", project_path(project), class: "btn btn-sm btn-primary px-2 rounded-3 mt-auto" %>
+            </td>
+            <td>
+              <%= button_to unsave_project_path(project), method: :delete, class: "btn border-0 p-0 bg-transparent" do %>
+                  <i class="bi bi-bookmark-fill text-dark fs-5"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  <% else %>
+    <p>No saved projects yet.</p>
+  <% end %>
+</div>
