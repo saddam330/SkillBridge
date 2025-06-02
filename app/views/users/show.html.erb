@@ -13,7 +13,7 @@
   <p>Role: employer</p>
 <%else%>
   <p>Role: Student</p>
-  <p>Skills: <%=@user.skills%></p>
+
 
   <p>First Name: <%=@user.first_name%></p>
   <p>Last Name: <%=@user.last_name%></p>
@@ -21,19 +21,4 @@
 
 <%end%>
 
-</div>
-<div class="cv">
-
-
-<% if @user.cv.present? %>
-
-  <h2>CV</h2>
-
-   <%= 5.times do |i| %>
-      <%= cl_image_tag @user.cv.key, format: "png", page:i+1, width:400, height:600 %>
-      <%end%>
-
-<% else %>
-  <p>No CV uploaded yet.</p>
-<% end %>
 </div>
