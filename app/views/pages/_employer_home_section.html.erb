@@ -1,0 +1,26 @@
+  <% # employer section %>
+  <div class="employer">
+    <div class="get-start">
+        <h2>How it works for Employer</h2>
+      <div class="column-grid c">
+      <div class="apply-cards">
+        <p class="card-img"><%= image_tag("company_profile.png") %></p>
+        <h4>Create Company Profile</h4>
+        <p>Showcase your startup's mission, culture, and opportunities.</p>
+      </div>
+      <div class="apply-cards">
+        <p class="card-img"><%= image_tag("post_project.png") %></p>
+        <h4>Post Project Roles</h4>
+        <p>Clearly define your project roles and requirements.</p>
+      </div>
+      <div class="apply-cards">
+        <p class="card-img"><%= image_tag("select.png") %></p>
+        <h4>Review & Select Talent</h4>
+        <p>Efficiently review applications and connect with wide range of talents.</p>
+      </div>
+      </div>
+      <% if !user_signed_in? %>
+        <p class="button"><%= link_to "Get started as an Employer", new_user_registration_path, class: "btn btn-primary" %></p>
+      <% end %>
+    </div>
+  </div>

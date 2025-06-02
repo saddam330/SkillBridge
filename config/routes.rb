@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   end
   get "dashboard", to: "projects#dashboard", as: :dashboard
 
+
   post   '/projects/:id/save',   to: 'projects#save',   as: :save_project
   delete '/projects/:id/unsave', to: 'projects#unsave', as: :unsave_project
   get    '/saved_projects',      to: 'projects#saved',  as: :saved_projects
+
 
 
 end

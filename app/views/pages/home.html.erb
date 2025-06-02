@@ -7,63 +7,24 @@
     <p><%= link_to "Get Started", projects_path, class: "btn btn-primary mt-4" %></p>
   </div>
 </div>
-<% # student section %>
-<div class="get-start">
-    <h2>How it works for Candidate</h2>
-  <div class="column-grid">
-  <div class="apply-cards">
-    <p class="card-img"><%= image_tag("create_profile.svg") %></p>
-    <h4>Create Your Profile</h4>
-    <p>Build a standout profile showcasing your skills and experience.</p>
-  </div>
-  <div class="apply-cards">
-    <p class="card-img"><%= image_tag("find_project.png") %></p>
-    <h4>Find Project</h4>
-    <p>Explore a wide range of project opportunities tailored to your interests.</p>
-  </div>
-  <div class="apply-cards">
-    <p class="card-img"><%= image_tag("apply_project.png") %></p>
-    <h4>Apply to Gain experience </h4>
-    <p>Easily apply to internships,  connect with startups and get hired.</p>
-  </div>
-  </div>
-   <% if !user_signed_in? %>
-    <p class="button"><%= link_to "Get started as an Candidate", new_user_registration_path, class: "btn btn-primary" %></p>
+<% if user_signed_in? %>
+  <% if !current_user.employer %>
+    <% # Student section %>
+      <%= render "student_home_section" %>
+  <% else %>
+    <% # employer section %>
+      <%= render "employer_home_section" %>
   <% end %>
-</div>
-
-<% # employer section %>
-<div class="employer">
-  <div class="get-start">
-      <h2>How it works for Employer</h2>
-    <div class="column-grid c">
-    <div class="apply-cards">
-      <p class="card-img"><%= image_tag("company_profile.png") %></p>
-      <h4>Create Company Profile</h4>
-      <p>Showcase your startup's mission, culture, and opportunities.</p>
-    </div>
-    <div class="apply-cards">
-      <p class="card-img"><%= image_tag("post_project.png") %></p>
-      <h4>Post Project Roles</h4>
-      <p>Clearly define your project roles and requirements.</p>
-    </div>
-    <div class="apply-cards">
-      <p class="card-img"><%= image_tag("select.png") %></p>
-      <h4>Review & Select Talent</h4>
-      <p>Efficiently review applications and connect with wide range of talents.</p>
-    </div>
-    </div>
-    <% if !user_signed_in? %>
-      <p class="button"><%= link_to "Get started as an Employer", new_user_registration_path, class: "btn btn-primary" %></p>
-    <% end %>
-  </div>
-</div>
-
+<% else %>
+    <% # Student section %>
+      <%= render "student_home_section" %>
+    <% # employer section %>
+      <%= render "employer_home_section" %>
+<% end %>
 <% # featured projects %>
 
 <div class="featured container w-75">
   <h2>Featured Projects</h2>
-
 <div class="column-grid">
 <% @projects.each do |project| %>
     <div class="featured-card">
@@ -77,7 +38,6 @@
           <% project.requirements.split(',').sample(rand(2..3)).each do |skill| %>
             <span class="pill skills"><%= skill.strip %></span>
           <% end %>
-
         </div>
       <p><%= link_to "View more", project_path(project), class: "btn btn-secondary mt-3" %></p>
     </div>
@@ -112,12 +72,13 @@
 </div>
 
 <%# bottom CTA %>
-
-<div class="bottom-cta">
-  <h2>Ready to start your journey</h2>
-  <p>Whether you are looking to gain experience or find talent, SkillBridge is your bridge to meaningful opportunities.</p>
-  <div class="cat-button m-3">
-    <span> <%= link_to "Start as Candidate", new_user_registration_path, class:"btn btn-candidate" %></span>
-    <span><%= link_to "Start as Employer", new_user_registration_path,  class:"btn btn-secondary"%></span>
+<%if  !user_signed_in? %>
+  <div class="bottom-cta">
+    <h2>Ready to start your journey</h2>
+    <p>Whether you are looking to gain experience or find talent, SkillBridge is your bridge to meaningful opportunities.</p>
+    <div class="cat-button m-3">
+      <span> <%= link_to "Start as Candidate", new_user_registration_path, class:"btn btn-candidate" %></span>
+      <span><%= link_to "Start as Employer", new_user_registration_path,  class:"btn btn-secondary"%></span>
+    </div>
   </div>
-</div>
+<% end %>
