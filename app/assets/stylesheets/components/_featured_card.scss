@@ -45,6 +45,7 @@
     gap: 0.5rem;
     overflow: hidden;
     white-space: nowrap;
+    padding-bottom: 3rem;
   }
 
   span.pill.skills {
@@ -54,6 +55,27 @@
 }
   .btn{
     width: 100%;
+  }
+
+
+  .bottom-button {
+    margin-top: auto;
+
+    .destroy a{
+      text-decoration: none;
+      color: #dc2626;
+      padding: 0.5rem;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #fef2f2;
+        color: #b91c1c;
+      }
+    }
+    .fa-trash {
+      color:darkgrey
+
+    }
   }
 
 }
