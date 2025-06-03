@@ -10,13 +10,15 @@ Rails.application.routes.draw do
   get '/download_cv_pdf', to: 'users#download_pdf'
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :projects do
     resources :applications, only: [:new, :create]
   end
   resources :applications, only: [:index, :show, :update] do
-    resources :feedbacks, only: [:new, :create]
-    resources :messages, only: :create
+
+    resources :feedbacks, only: [:create]
+    resources :messages, only: [:create]
+
   end
 
   resources :projects do
