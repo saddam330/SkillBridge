@@ -1,0 +1,17 @@
+<!-- app/views/users/edit.html.erb -->
+<div class=" form container w-75">
+  <h1>Customize Your Profile</h1>
+
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :about_me, as: :text %>
+    <%= f.input :contact_info %>
+    <%= f.input :links, label: "Social Links" %>
+    <%= f.input :location %>
+    <%= f.input :education %>
+    <%= f.input :expertise %>
+    <%= f.input :work_experience, as: :text %>
+    <%= f.input :hobbies %>
+
+    <%= f.button :submit, "Update Your Profile" %>
+  <% end %>
+</div>

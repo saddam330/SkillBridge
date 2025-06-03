@@ -1,24 +1,60 @@
+<div class="container py-5">
+  <!-- Profile Header -->
+  <div class="mb-4 text-center">
+    <h1 class="fw-bold">My Profile</h1>
+  </div>
 
-<h4><%= link_to "Go to back", "/" %></h4>
-
-<div class="profile-pic">
-
-<h1>My Profile</h1>
-
-<%= cl_image_tag @user.photo.key, class:"image",  height: 300, width: 300, crop: :fill if @user.photo.present? %>
-</div>
-<div class="content">
-
-<% if @user.employer%>
-  <p>Role: employer</p>
-<%else%>
-  <p>Role: Student</p>
+  <!-- Profile Card -->
+  <div class="row mt-4 g-4 bg-white p-4 rounded shadow-sm border">
+    <!-- Left: Profile Picture & Name -->
+    <div class="col-lg-4 text-center border-end">
+    <h3 class="mb-3"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize  %></h3>
+      <%= cl_image_tag @user.photo.key, class:"image rounded-circle mb-3 border shadow",  height: 300, width: 300, crop: :fill if @user.photo.present? %>
 
 
-  <p>First Name: <%=@user.first_name%></p>
-  <p>Last Name: <%=@user.last_name%></p>
-  <p>Email: <%=@user.email%></p>
+      <div class="col-md-12">
+          <label class="form-label text-muted mb-3">About Me</label>
+          <p class="mb-0"><%= @user.about_me %></p>
+        </div>
+    </div>
 
-<%end%>
-
+    <!-- Right: Profile Info -->
+    <div class="col-lg-8">
+      <div class="row gy-3">
+        <div class="col-md-6">
+          <label class="form-label text-muted mb-0">Email</label>
+          <div><%= @user.email %></div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted mb-0">Location</label>
+          <div> <%= @user.location %></div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted mb-0">Education</label>
+          <div> <%= @user.education %></div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted mb-0">Work Experience</label>
+          <div><%= @user.work_experience %></div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label text-muted mb-0">Expertise</label>
+          <div><%= @user.expertise %></div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label text-muted mb-0">Hobbies</label>
+          <div><%= @user.hobbies %></div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label text-muted mb-0">Social Links</label>
+          <div><%= @user.links %></div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label text-muted mb-0">Contact Info</label>
+          <div><%= @user.contact_info %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%= link_to "Update Your Profile", edit_user_path(@user), class: "btn btn-primary m-4 rounded-4 text-center" %>
 </div>
