@@ -52,8 +52,10 @@
           <% end %>
 
           <div class="mt-4">
-            <% unless current_user.employer? %>
-              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+            <% if user_signed_in? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" unless current_user.employer? %>
+            <% else %>
+              <%=  link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
             <% end %>
           </div>
         </div>
@@ -114,7 +116,9 @@
       <!-- Text at the bottom and the Apply Button -->
       <div class="mb-4 text-center d-md-block d-none">
         <p class="text-muted">Interested in this opportunity? Don't wait too long!</p>
-        <% unless current_user.employer? %>
+        <% if user_signed_in? %>
+          <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" unless current_user.employer? %>
+        <% else %>
           <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
         <% end %>
       </div>
@@ -124,7 +128,9 @@
         <div class="container">
           <div class="text-center">
             <p class="text-muted mb-2">Interested in this opportunity? Don't wait too long!</p>
-            <% unless current_user.employer? %>
+            <% if user_signed_in? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" unless current_user.employer? %>
+            <% else %>
               <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
             <% end %>
           </div>
@@ -244,7 +250,9 @@
           <% end %>
 
           <div class="mt-4">
-            <% unless current_user.employer? %>
+            <% if user_signed_in? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" unless current_user.employer? %>
+            <% else %>
               <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
             <% end %>
           </div>
@@ -306,8 +314,10 @@
       <!-- Text at the bottom and the Apply Button -->
       <div class="mb-4 text-center d-md-block d-none">
         <p class="text-muted">Interested in this opportunity? Don't wait too long!</p>
-        <% unless current_user.employer? %>
-          <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" %>
+        <% if user_signed_in? %>
+          <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary" unless current_user.employer? %>
+        <% else %>
+            <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary"  %>
         <% end %>
       </div>
 
@@ -316,7 +326,9 @@
         <div class="container">
           <div class="text-center">
             <p class="text-muted mb-2">Interested in this opportunity? Don't wait too long!</p>
-            <% unless current_user.employer? %>
+            <% if user_signed_in? %>
+              <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" unless current_user.employer? %>
+            <% else %>
               <%= link_to "Apply Now", new_project_application_path(@project), class: "btn btn-primary w-75" %>
             <% end %>
           </div>
