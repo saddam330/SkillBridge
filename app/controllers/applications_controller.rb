@@ -18,6 +18,7 @@ class ApplicationsController < ApplicationController
     else
       @application = current_user.applications.find(params[:id])
     end
+    @message = Message.new
   end
 
   def new
