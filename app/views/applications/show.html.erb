@@ -60,9 +60,9 @@
 <br>
           <%# message feature %>
           <div>
-            <div class="container chat">
+            <div class="container chat <%= "d-none" if current_user.employer.nil? && @application.messages.empty? %>">
               <h3>Your chat for <%= @application.project.project_title %></h3>
-                <%= turbo_stream_from "application_#{@application.id}_messages" %>
+              <%= turbo_stream_from "application_#{@application.id}_messages" %>
               <div id="messages" class="messages">
                 <% @application.messages.each do |message| %>
                    <%= render "messages/message", message: message, user: current_user%>
@@ -82,6 +82,7 @@
                 <% end %>
             </div>
           </div>
+
 
 
 
