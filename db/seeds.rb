@@ -289,7 +289,7 @@ demo_user = User.create!(
 #     status: %w[pending accepted rejected].sample,
 #     user: demo_user,
 #     project: projects.sample,
-#     skills:
+#     skills: %w[react ruby python CSS].sample,
 #   )
 # end
 
@@ -297,7 +297,8 @@ demo_user = User.create!(
 #   Application.create!(
 #     status: %w[pending accepted rejected].sample,
 #     user: users.sample,
-#     project: projects.sample
+#     project: projects.sample,
+#     skills: %w[react ruby python CSS].sample,
 #   )
 # end
 

@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
         "Not found.."
       end
     end
+    
 
     if params[:category].present?
       @projects = @projects.where(category: params[:category])
