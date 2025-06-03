@@ -1,3 +1,4 @@
+<%# User's Projects  %>
 <div class="featured container w-75">
 <h3 class="pr-3 pt-5"> Welcome <%= current_user.first_name %>! </h3>
 <h2>Your projects</h2>
@@ -15,12 +16,24 @@
             <span class="pill skills"><%= skill.strip %></span>
           <% end %>
         </div>
-      <div class="button">
+      <div class="bottom-button">
         <p><%= link_to "See all application", dashboard_project_path(project), class: "btn btn-primary mt-3" %></p>
-      <p><%= link_to "View more", project_path(project), class: "btn btn-secondary" %></p>
+        <p><%= link_to "View more", project_path(project), class: "btn btn-secondary" %></p>
+        <div class="destroy">
+           <p> <% unless project.applications.where(status: "Accepted").count > 0 %>
+              <%= link_to project_path(project),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                <i class="fas fa-trash"></i> Delete
+              <% end %>
+            <% end %>
+        </p>
+        </div>
       </div>
+
+
     </div>
 <% end %>
     </div>
   </div>
 </div>
+<%# Destroy user's projects %>

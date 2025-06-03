@@ -18,6 +18,7 @@ class ApplicationsController < ApplicationController
     else
       @application = current_user.applications.find(params[:id])
     end
+    @message = Message.new
   end
 
   def new
@@ -80,6 +81,6 @@ class ApplicationsController < ApplicationController
   end
 
   def status_params
-      params.require(:application).permit(:status)
+    params.require(:application).permit(:status)
   end
 end

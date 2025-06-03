@@ -1,4 +1,4 @@
-<h2>Applicantons on <%= @project.project_title %></h2>
+<h2>Applicantons on<%= @project.project_title %></h2>
 <div class= "container w-75">
   <% @applicants.each do |applicant| %>
       <div class="applicant-card">
@@ -16,7 +16,7 @@
             <p><%= applicant.user.email %></p>
           </div>
           <div class="skills-info">
-            <% (applicant.skills || '').split(',').each do |skill| %>
+            <% (applicant.skills || '').split(/[., ;]/).select{|skill| skill != ""}.each do |skill| %>
               <span class="pill skills"><%= skill.strip %></span>
             <% end %>
           </div>
