@@ -80,6 +80,6 @@ class ApplicationsController < ApplicationController
   end
 
   def status_params
-      params.require(:application).permit(:status)
+    params.require(:application).permit(:status)
   end
 end
