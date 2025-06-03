@@ -20,25 +20,25 @@ User.delete_all
 # Create Users
 users = User.create!([
   { first_name: "Alice", last_name: "Johnson", email: "alice@example.com", password: "password", employer: true },
-  { first_name: "Bob", last_name: "Smith", email: "bob@example.com", password: "password", employer: false },
+  { first_name: "Bob", last_name: "Smith", email: "bob@example.com", password: "password", employer: true },
   { first_name: "Carla", last_name: "Nguyen", email: "carla@example.com", password: "password", employer: true },
-  { first_name: "David", last_name: "Lee", email: "david@example.com", password: "password", employer: false },
-  { first_name: "Emma", last_name: "Williams", email: "emma@example.com", password: "password", employer: false },
+  { first_name: "David", last_name: "Lee", email: "david@example.com", password: "password", employer: true },
+  { first_name: "Emma", last_name: "Williams", email: "emma@example.com", password: "password", employer: true },
   { first_name: "Frank", last_name: "Garcia", email: "frank@example.com", password: "password", employer: true },
-  { first_name: "Grace", last_name: "Kim", email: "grace@example.com", password: "password", employer: false },
-  { first_name: "Henry", last_name: "Miller", email: "henry@example.com", password: "password", employer: false },
+  { first_name: "Grace", last_name: "Kim", email: "grace@example.com", password: "password", employer: true },
+  { first_name: "Henry", last_name: "Miller", email: "henry@example.com", password: "password", employer: true },
   { first_name: "Isabella", last_name: "Lopez", email: "isabella@example.com", password: "password", employer: true },
-  { first_name: "Jack", last_name: "Brown", email: "jack@example.com", password: "password", employer: false },
+  { first_name: "Jack", last_name: "Brown", email: "jack@example.com", password: "password", employer: true },
   { first_name: "Kathy", last_name: "Chen", email: "kathy@example.com", password: "password", employer: true },
   { first_name: "Leo", last_name: "Davis", email: "leo@example.com", password: "password", employer: false },
-  { first_name: "Mia", last_name: "Patel", email: "mia@example.com", password: "password", employer: false },
-  { first_name: "Nathan", last_name: "White", email: "nathan@example.com", password: "password", employer: true },
+  { first_name: "Mia", last_name: "Patel", email: "mia@example.com", password: "password", employer: true },
+  { first_name: "Nathan", last_name: "White", email: "nathan@example.com", password: "password", employer: false },
   { first_name: "Olivia", last_name: "Scott", email: "olivia@example.com", password: "password", employer: true },
-  { first_name: "Paul", last_name: "Taylor", email: "paul@example.com", password: "password", employer: false },
+  { first_name: "Paul", last_name: "Taylor", email: "paul@example.com", password: "password", employer: true },
   { first_name: "Quinn", last_name: "Evans", email: "quinn@example.com", password: "password", employer: true },
-  { first_name: "Rachel", last_name: "Moore", email: "rachel@example.com", password: "password", employer: false },
-  { first_name: "Sam", last_name: "Anderson", email: "sam@example.com", password: "password", employer: true },
-  { first_name: "Tina", last_name: "Martin", email: "tina@example.com", password: "password", employer: false }
+  { first_name: "Rachel", last_name: "Moore", email: "rachel@example.com", password: "password", employer: true },
+  { first_name: "Sam", last_name: "Anderson", email: "sam@example.com", password: "password", employer: false },
+  { first_name: "Tina", last_name: "Martin", email: "tina@example.com", password: "password", employer: true }
 ])
 # Create Projects
 projects = Project.create!([
