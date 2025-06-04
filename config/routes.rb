@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :applications, only: [:new, :create]
   end
   resources :applications, only: [:index, :show, :update] do
-    resources :feedbacks, only: [:new, :create]
+    resources :feedbacks, only: [:create]
   end
 
   resources :projects do

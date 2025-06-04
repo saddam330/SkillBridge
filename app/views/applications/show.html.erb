@@ -4,8 +4,13 @@
       <div class="card shadow rounded-4 p-4">
         <div class="card-body">
 
-          <h2 class="text-center mb-4">Application Details</h2>
 
+
+        <%= render 'feedbacks/form', application: @application %>
+
+
+
+          <h2 class="text-center mb-4">Application Details</h2>
           <p><strong>Project:</strong> <%= @application.project.project_title %></p>
           <p><strong>Requirements:</strong> <%= @application.project.requirements %></p>
           <p><strong>Location:</strong> <%= @application.project.location %></p>
@@ -57,7 +62,9 @@
               </div>
             <% end %>
           <% end %>
-
+          <button type="button" class="btn btn-primary my-3 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Leave Feedback for SkillBridge
+          </button>
         </div>
       </div>
     </div>
