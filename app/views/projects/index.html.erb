@@ -6,14 +6,16 @@
 
     <!-- 🔍 Search Bar at the Top -->
     <%= form_with url: projects_path, method: :get, local: true do %>
+
     <div class="input-group mb-4 bg-light rounded px-3 py-2">
       <span class="input-group-text bg-light border-0"><i class="bi bi-search"></i></span>
       <%= text_field_tag :query, params[:query], class: "form-control border-0 bg-light", placeholder: "Search for projects..." %>
       <button class="btn btn-primary px-4 rounded-3 z-0">Search</button>
     </div>
 
+
     <!-- 🔲 Filters and Projects Row -->
-    <div class="row">
+    <div class="row ">
 
       <!-- Sidebar Filters -->
       <aside class="col-md-3">
@@ -69,8 +71,8 @@
      <%end %>
      <!-- Main Projects Area -->
 
-      <main class="col-md-9">
-        <div class="row g-4">
+      <main class="col-md-9 ">
+        <div class="row g-4 ">
           <% @projects.each do |project| %>
             <div class="col-12">
               <div class="card project-card h-100 shadow-sm border-0 rounded-4 p-3 ">
