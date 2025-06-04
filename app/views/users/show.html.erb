@@ -1,3 +1,61 @@
+<div class="container">
+  <div class="welcome">
+    <h2> Welcome! <%= @user.first_name.capitalize %> </h2>
+  <%= link_to "Update Your Profile", edit_user_path(@user), class: "btn btn-primary m-4 rounded-4 text-center" %>
+  </div>
+  <div class="profile-card container w-50 ">
+    <div class="profile">
+      <%= cl_image_tag @user.photo.key, class: "user-img" %>
+      <h3><%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize  %></h3>
+      <p><%= @user.location %></p>
+    </div>
+    <div class="about-user">
+      <h4>About me</h4>
+      <p><%= @user.about_me %></p>
+    </div>
+    <div class="work-exp-user">
+      <h4>Work Experience</h4>
+      <p><%= @user.work_experience %></p>
+    </div>
+    <div class="edu-user">
+      <h4>Education</h4>
+      <p><%= @user.education %></p>
+    </div>
+    <div class="skills-user">
+      <h4>Skills</h4>
+      <p><% (@user.expertise || '').split(/[., ;]/).select{|skill| skill != ""}.each do |skill| %>
+              <span class="pill skills"><%= skill.strip %></span>
+            <% end %></p>
+    </div>
+    <div class="hobbies-user">
+      <h4>Skills</h4>
+      <p><% (@user.hobbies || '').split(/[., ;]/).select{|skill| skill != ""}.each do |skill| %>
+              <span class="pill skills"><%= skill.strip %></span>
+            <% end %></p>
+    </div>
+    <div class="social-links">
+      <div class="portfolio">
+        <i class="fa-solid fa-globe"></i>
+        <%= @user.portfolio_url %>
+      </div>
+      <div class="portfolio">
+        <i class="fa-brands fa-square-github"></i>
+        <%= @user.github_url %>
+      </div>
+      <div class="portfolio">
+        <i class="fa-brands fa-linkedin"></i>
+        <%= @user.linkedin_url %>
+      </div>
+      <div class="portfolio">
+        <i class="fa-brands fa-square-x-twitter"></i>
+        <%= @user.twitter_url %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="container py-5">
   <!-- Profile Header -->
   <div class="mb-4 text-center">
@@ -56,5 +114,5 @@
       </div>
     </div>
   </div>
-<%= link_to "Update Your Profile", edit_user_path(@user), class: "btn btn-primary m-4 rounded-4 text-center" %>
+
 </div>
