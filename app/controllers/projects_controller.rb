@@ -23,7 +23,6 @@ class ProjectsController < ApplicationController
         "Not found.."
       end
     end
-    
 
     if params[:category].present?
       @projects = @projects.where(category: params[:category])
@@ -59,6 +58,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to dashboard_path(current_user)
   end
 
   def dashboard

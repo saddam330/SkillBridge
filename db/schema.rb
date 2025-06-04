@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_02_170203) do
+
+ActiveRecord::Schema[7.1].define(version: 2025_06_03_133804) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,6 +95,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_170203) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "solid_cable_messages", force: :cascade do |t|
+    t.text "channel"
+    t.text "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel"], name: "index_solid_cable_messages_on_channel"
+    t.index ["created_at"], name: "index_solid_cable_messages_on_created_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -104,6 +115,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_170203) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "employer"
+    t.text "about_me"
+    t.text "contact_info"
+    t.text "links"
+    t.string "location"
+    t.string "education"
+    t.text "expertise"
+    t.text "work_experience"
+    t.text "hobbies"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

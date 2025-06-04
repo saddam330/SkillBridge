@@ -62,9 +62,40 @@
               </div>
             <% end %>
           <% end %>
+
           <button type="button" class="btn btn-primary my-3 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Leave Feedback for SkillBridge
           </button>
+
+<br>
+          <%# message feature %>
+          <div>
+            <div class="container chat <%= "d-none" if current_user.employer.nil? && @application.messages.empty? %>">
+              <h3>Your chat for <%= @application.project.project_title %></h3>
+              <%= turbo_stream_from "application_#{@application.id}_messages" %>
+              <div id="messages" class="messages">
+                <% @application.messages.each do |message| %>
+                   <%= render "messages/message", message: message, user: current_user%>
+                <% end %>
+              </div>
+                <%= simple_form_for [@application, @message],
+                    html: {class: "d-flex",
+                    data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }
+                    } do |f| %>
+                  <% other_user = current_user == @application.project.user ? @application.user : @application.project.user %>
+                  <%= f.input :content,
+                    label: false,
+                    placeholder: "Message #{other_user.first_name}",
+                    wrapper_html: {class: "flex-grow-1"}
+                  %>
+                  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+                <% end %>
+            </div>
+          </div>
+
+
+
+
         </div>
       </div>
     </div>

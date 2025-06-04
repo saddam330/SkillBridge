@@ -20,6 +20,11 @@ gem "importmap-rails"
 # Active Record Validations
 gem 'active_storage_validations'
 
+# action cable
+gem "solid_cable"
+
+
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 

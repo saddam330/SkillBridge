@@ -23,7 +23,7 @@
           </div>
           <div class="mb-3">
             <% if @project.requirements.present? %>
-              <% @project.requirements.to_s.split(/[.,;]/).reject(&:blank?).each do |requirement| %>
+              <% @project.requirements.to_s.split(/[.,; ]/).reject(&:blank?).each do |requirement| %>
                 <span class="pill me-2 mb-2"><%= requirement.strip %></span>
               <% end %>
             <% else %>
