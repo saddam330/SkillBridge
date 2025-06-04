@@ -6,6 +6,17 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
+
+      applicant = @application.user                    # Candidate
+      employer = @application.project.user             # Project owner
+
+      recipient = current_user == applicant ? employer : applicant
+
+      # Create notification
+      Notification.create!(
+        user: recipient,
+        content: "💬 New message from #{current_user.first_name} regarding '#{@application.project.project_title}'"
+      )
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.append(:messages, partial: "messages/message",

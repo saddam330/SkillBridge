@@ -11,6 +11,10 @@
 
           <% if !current_user.employer %>
             <li><%= link_to "Projects", projects_path %></li>
+            <li class = "overflow-visible"><turbo-frame id="notifications">
+                  <%= render "shared/notification_icon" %>
+                </turbo-frame>
+            </li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
@@ -27,7 +31,12 @@
               </div>
             </li>
           <% else %>
-          <li><%= link_to " Post Projects", new_project_path %></li>
+            <li><%= link_to " Post Projects", new_project_path %></li>
+            <li class = "overflow-visible">
+              <turbo-frame id="notifications">
+                <%= render "shared/notification_icon" %>
+              </turbo-frame>
+            </li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.photo.attached?  %>
@@ -55,4 +64,6 @@
       <% end %>
     </div>
   </nav>
+
+<%= turbo_stream_from "notifications_#{current_user&.id}" %>
 

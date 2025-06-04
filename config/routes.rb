@@ -32,6 +32,13 @@ Rails.application.routes.draw do
   delete '/projects/:id/unsave', to: 'projects#unsave', as: :unsave_project
   get    '/saved_projects',      to: 'projects#saved',  as: :saved_projects
 
+  resources :notifications, only: [:index] do
+    member do
+      patch :mark_as_read
+    end
+  end
+
+  get "notifications/list", to: "notifications#list"
 
 
 end

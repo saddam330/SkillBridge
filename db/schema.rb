@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.1].define(version: 2025_06_04_085449) do
+=======
 ActiveRecord::Schema[7.1].define(version: 2025_06_04_115425) do
+>>>>>>> master
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +74,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_115425) do
     t.datetime "updated_at", null: false
     t.index ["application_id"], name: "index_messages_on_application_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "content"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -135,5 +148,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_115425) do
   add_foreign_key "feedbacks", "applications"
   add_foreign_key "messages", "applications"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "projects", "users"
 end
