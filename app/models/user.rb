@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   # validates :first_name, :last_name, :password, presence: true
 
 

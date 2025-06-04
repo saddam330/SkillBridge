@@ -15,6 +15,7 @@ Message.delete_all
 Feedback.delete_all
 Application.delete_all
 Project.delete_all
+Notification.delete_all
 User.delete_all
 
 # Create Users

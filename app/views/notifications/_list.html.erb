@@ -1,0 +1,19 @@
+<% if @notifications.any? %>
+  <ul class="flex-column  divide-gray-200 max-h-64 overflow-y-auto">
+    <% @notifications.each do |notification| %>
+
+      <li class = "p-3 border border-secondary text-start">
+          <%= link_to notification.content,
+                      mark_as_read_notification_path(notification),
+
+                      data: { turbo_method: :patch, turbo_frame: "_top" },
+                      class: "text-blue-600 hover:underline text-sm" %>
+          <small class="text-gray-500 ps-3">
+            <%= time_ago_in_words(notification.created_at) %> ago
+          </small>
+        </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="p-4 text-sm text-gray-500 text-center">No notifications</div>
+<% end %>

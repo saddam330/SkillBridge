@@ -1,0 +1,9 @@
+<turbo-stream target="notification_count_<%= user.id %>" action="replace">
+  <template>
+    <% if user.notifications.unread.count > 0 %>
+      <span class="absolute -top-1 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+        <%= user.notifications.unread.count %>
+      </span>
+    <% end %>
+  </template>
+</turbo-stream>
