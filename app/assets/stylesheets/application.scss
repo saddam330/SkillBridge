@@ -21,7 +21,7 @@ body {
 
 }
 
-h2,h3,h4,h5 {
+h1,h2,h3,h4,h5 {
   color: $headings;
   font-family: $headers-font;
 }
@@ -58,4 +58,3 @@ h2,h3,h4,h5 {
 .rating-stars label:hover ~ label {
   color: #f5c518; // gold-like star color
 }
-
