@@ -1,5 +1,15 @@
-<h2>Applicantons on<%= @project.project_title %></h2>
+<h2>Applicantons on <%= @project.project_title %></h2>
+
 <div class= "container w-75">
+  <!-- 🔍 Search Bar at the Top -->
+    <%= form_with url: dashboard_project_path(@project), method: :get, local: true do %>
+    <div class="input-group mb-4 bg-light rounded px-3 py-2">
+      <span class="input-group-text bg-light border-0"><i class="bi bi-search"></i></span>
+      <%= text_field_tag :query, params[:query], class: "form-control border-0 bg-light", placeholder: "Search for job skills ..." %>
+      <button class="btn btn-primary px-4 rounded-3">Search</button>
+    </div>
+    <% end %>
+
   <% @applicants.each do |applicant| %>
       <div class="applicant-card">
     <%= link_to  application_path(applicant) do %>

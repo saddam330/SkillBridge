@@ -69,7 +69,12 @@ class ProjectsController < ApplicationController
 
   def applicants
     @project = Project.find(params[:id])
-    @applicants = @project.applications
+    if params[:query].present?
+      skills = params[:query].split(/[., ;]/).select{|skill| skill != ""}
+      @applicants = @project.applications.by_skills(skills)
+    else
+      @applicants = @project.applications
+    end
   end
 
   def save
