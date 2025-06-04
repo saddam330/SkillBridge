@@ -26,3 +26,27 @@ h2,h3,h4,h5 {
     color: $text;
     font-family: $body-font;
   }
+
+
+.rating-stars {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: inline-flex;
+  gap: 0.2rem;
+}
+
+.rating-stars input[type="radio"] {
+  display: none;
+}
+
+.rating-stars label {
+  font-size: 1.8rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating-stars input[type="radio"]:checked ~ label,
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+  color: #f5c518; // gold-like star color
+}
