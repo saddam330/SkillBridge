@@ -2,7 +2,7 @@ class ApplicationsController < ApplicationController
 
 
   before_action :authenticate_user!
-  before_action :set_application, only: [:update]
+  before_action :set_application, only: [:show, :update]
   # before_action :authorize_user!
   before_action :ensure_non_employer, only: [:create]
   before_action :set_project, only: [:new, :create]
@@ -12,7 +12,6 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-
     if current_user.employer?
       @application = Application.where(project_id: current_user.projects.pluck(:id)).find(params[:id])
     else
@@ -38,6 +37,7 @@ class ApplicationsController < ApplicationController
       redirect_to root_path, alert: "Unauthorized"
     end
   end
+
   def create
     @project = Project.find(params[:project_id])
     @application = @project.applications.new(application_params)
@@ -45,7 +45,7 @@ class ApplicationsController < ApplicationController
     @application.status = "pending"
 
     if @application.save
-      redirect_to applications_path, notice: "Your application successfully submitted!"
+      redirect_to application_path(@application), notice: "Your application successfully submitted!"
 
     else
       render :new, status: :unprocessable_entity

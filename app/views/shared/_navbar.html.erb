@@ -26,7 +26,7 @@
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
                 <%= link_to "My applications", applications_path(current_user), class: "dropdown-item" %>
-
+                <%= link_to "Saved jobs", saved_projects_path(current_user), class: "dropdown-item" %>
                 <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item btn btn-link p-0 border-0", style: "background: none; text-decoration: none;" %>
               </div>
             </li>

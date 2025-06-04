@@ -10,4 +10,11 @@ class Application < ApplicationRecord
   has_one_attached :cv
   validates :cover_letter, attached: true
   validates :cv, attached: true
+
+  def self.by_skills(skills)
+    select do |applicant|
+      applicant_skills = applicant.skills.to_s.downcase.split(",").map(&:strip)
+      (skills.map(&:downcase) - applicant_skills).empty?
+    end
+  end
 end
