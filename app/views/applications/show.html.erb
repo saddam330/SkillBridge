@@ -30,9 +30,13 @@
             <span class="<%= status_class %> px-3 py-2 rounded-pill"><%= @application.status %></span>
           </p>
           <% if current_user == @application.user && @application.status.downcase == "pending" %>
-            <div class="alert alert-warning mt-3">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
               This is your application. We’ll update the status as it progresses.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+
 
           <% elsif current_user.employer? && current_user == @application.project.user %>
             <% if @application.status == "pending" %>
