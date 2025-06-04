@@ -1,0 +1,27 @@
+<% unread_count = current_user.notifications.unread.count %>
+
+<div data-controller="notification" class="relative">
+  <button class = "rounded-5"
+    data-action="click->notification#toggle"
+    class="relative"
+    id="notification-button"
+  >
+    <i class="fa-regular fa-bell"></i>
+
+    <%= turbo_frame_tag "notification_count_#{current_user.id}" do %>
+      <% if unread_count > 0 %>
+        <span class="absolute -top-1 -right-2 bg-red-500 text-black text-xs px-2 py-0.5 rounded-full">
+          <%= unread_count %>
+        </span>
+      <% end %>
+    <% end %>
+  </button>
+
+  <!-- Dropdown -->
+  <div
+    data-notification-target="menu"
+    class="hidden position-absolute mt-2 w-80 bg-white shadow-lg rounded-lg z-50"
+  >
+    <div data-notification-target="content"></div>
+  </div>
+</div>

@@ -11,15 +11,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-   
+
 
   <body><%= render "shared/navbar" %>
-  <body data-current-user-id="<%= current_user ? current_user.id : "" %>"><%= render "shared/navbar" %>
 
-<%= render "shared/flashes" %>
+
+  <%= render "shared/flashes" %>
 
     <%= yield %>
-
+    <%# <%= turbo_stream_from current_user %>
   </body>
   <%= render "shared/footer" %>
 </html>
