@@ -15,6 +15,10 @@
 
 body {
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
 }
 
 h2,h3,h4,h5 {
@@ -25,6 +29,10 @@ h2,h3,h4,h5 {
  p{
     color: $text;
     font-family: $body-font;
+  }
+
+  footer {
+    margin-top: auto;
   }
 
 
@@ -50,3 +58,4 @@ h2,h3,h4,h5 {
 .rating-stars label:hover ~ label {
   color: #f5c518; // gold-like star color
 }
+
