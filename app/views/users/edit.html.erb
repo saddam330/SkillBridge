@@ -5,7 +5,10 @@
   <%= simple_form_for @user do |f| %>
     <%= f.input :about_me, as: :text %>
     <%= f.input :contact_info %>
-    <%= f.input :links, label: "Social Links" %>
+    <%= f.input :github_url %>
+    <%= f.input :linkedin_url %>
+    <%= f.input :twitter_url %>
+    <%= f.input :portfolio_url %>
     <%= f.input :location %>
     <%= f.input :education %>
     <%= f.input :expertise %>
