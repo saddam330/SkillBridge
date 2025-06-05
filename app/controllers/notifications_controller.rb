@@ -8,7 +8,8 @@ class NotificationsController < ApplicationController
   def mark_as_read
     notification = current_user.notifications.find(params[:id])
     notification.update(read: true)
-    redirect_back fallback_location: root_path
+    @application = Application.find(notification.application_id)
+    redirect_to  application_path(@application)
   end
 
   def list
