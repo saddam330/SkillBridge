@@ -1,81 +1,84 @@
-
 .featured-card {
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 1.5rem;
-  width: 100%;
-  border-radius: 8px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+ box-shadow: 0 0 15px rgba(0,0,0,0.2);
+ padding: 1.5rem;
+ width: 100%;
+ border-radius: 8px;
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+ margin: 0 auto;
 
-  .featured-top{
-    display: flex;
-    justify-content: space-between;
-    align-items: self-start;
-    h4{
-      margin: 0;
-      width: 70%;
-    }
+ .featured-top{
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   flex-wrap: wrap;
+   gap: 0.5rem; 
 
-    span{
-      color: #4AD03B;
-      font-size: 0.5rem;
+   h4{
+     margin: 0;
+     width: 65%;
+     flex-shrink: 1;
+   }
 
-    }
-  }
-  .company-info{
-    color: darkgray;
-    margin:4px 0;
+   span{
+     color: #4AD03B;
+     font-size: 0.5rem;
+     flex-shrink: 0;
+     white-space: nowrap;
+   }
+ }
 
-  }
+ .company-info{
+   color: darkgray;
+   margin:4px 0;
+ }
 
-  .project-brief{
-    margin: 1rem 0;
-  }
-  .skills {
-    color: $text;
-    width: auto;
-    font-size: 0.75rem;
-  }
+ .project-brief{
+   margin: 1rem 0;
+ }
 
-  .skills-info{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    overflow: hidden;
-    white-space: nowrap;
-    padding-bottom: 3rem;
-  }
+ .skills {
+   color: $text;
+   width: auto;
+   font-size: 0.75rem;
+ }
 
-  span.pill.skills {
-  display: inline-block !important;
-  width: auto !important;
-  max-width: fit-content !important;
-}
-  .btn{
-    width: 100%;
-  }
+ .skills-info{
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+   overflow: hidden;
+   white-space: nowrap;
+   padding-bottom: 3rem;
+ }
 
+ span.pill.skills {
+   display: inline-block !important;
+   width: auto !important;
+   max-width: fit-content !important;
+ }
 
-  .bottom-button {
-    margin-top: auto;
+ .btn{
+   width: 100%;
+ }
 
-    .destroy a{
-      text-decoration: none;
-      color: #dc2626;
-      padding: 0.5rem;
-      border-radius: 4px;
+ .bottom-button {
+   margin-top: auto;
 
-      &:hover {
-        background-color: #fef2f2;
-        color: #b91c1c;
-      }
-    }
-    .fa-trash {
-      color:darkgrey
+   .destroy a{
+     text-decoration: none;
+     color: #dc2626;
+     padding: 0.5rem;
+     border-radius: 4px;
 
-    }
-  }
-
+     &:hover {
+       background-color: #fef2f2;
+       color: #b91c1c;
+     }
+   }
+   .fa-trash {
+     color:darkgrey
+   }
+ }
 }

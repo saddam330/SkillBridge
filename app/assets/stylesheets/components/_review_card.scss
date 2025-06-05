@@ -1,42 +1,52 @@
-.feedback-card{
-
- width: 100%;
- padding: 1rem ;
+.feedback-card {
+ width: 320px;
+ padding: 1rem;
  box-shadow: 0 0 15px rgba(0,0,0,0.2);
  border-radius: 8px;
+ display:flex ;
+ flex-direction: column;
 
  img {
-  width: 3rem;
+   width: 2rem;
  }
 
- .review-comment{
-  margin-top: 1.5rem;
+ .review-comment {
+   margin-top: 1.5rem;
  }
 
- .info{
-  display: flex;
-  gap: 1rem ;
-  align-items: center;
+ .info {
+   display: flex;
+   gap: 1rem;
+   align-items: center;
  }
 
- .project-info{
-  display: flex;
-  flex-direction: column;
-
-  .user-name{
-    font-size: 1rem;
-  }
-  .project-title{
-    font-size: 0.75rem;
-    color: darkgrey;
-  }
-
-  p{
-    margin: 0;
-  }
- }
- .rating{
+ .feedback-bottom {
   margin-top: auto;
-  text-align: center;
+ }
+
+ .project-info {
+   display: flex;
+   flex-direction: column;
+
+
+   .user-name {
+     font-size: 1rem;
+   }
+
+   .project-title {
+     font-size: 0.75rem;
+     color: darkgrey;
+   }
+
+
+
+   p {
+     margin: 0;
+   }
+ }
+
+ .rating {
+   margin-top: 1rem;
+   text-align: center;
  }
 }
