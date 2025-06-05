@@ -1,60 +1,111 @@
-<div class="container py-5">
-  <!-- Profile Header -->
-  <div class="mb-4 text-center">
-    <h1 class="fw-bold">My Profile</h1>
+<div class="container">
+  <div class="welcome">
+    <h2> Welcome! <%= @user.first_name.capitalize %> </h2>
+  <%= link_to "Update Your Profile", edit_user_path(@user), class: "btn btn-primary m-4 rounded-4 text-center" %>
   </div>
-
-  <!-- Profile Card -->
-  <div class="row mt-4 g-4 bg-white p-4 rounded shadow-sm border">
-    <!-- Left: Profile Picture & Name -->
-    <div class="col-lg-4 text-center border-end">
-    <h3 class="mb-3"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize  %></h3>
-      <%= cl_image_tag @user.photo.key, class:"image rounded-circle mb-3 border shadow",  height: 300, width: 300, crop: :fill if @user.photo.present? %>
-
-
-      <div class="col-md-12">
-          <label class="form-label text-muted mb-3">About Me</label>
-          <p class="mb-0"><%= @user.about_me %></p>
-        </div>
-    </div>
-
-    <!-- Right: Profile Info -->
-    <div class="col-lg-8">
-      <div class="row gy-3">
-        <div class="col-md-6">
-          <label class="form-label text-muted mb-0">Email</label>
-          <div><%= @user.email %></div>
-        </div>
-        <div class="col-md-6">
-          <label class="form-label text-muted mb-0">Location</label>
-          <div> <%= @user.location %></div>
-        </div>
-        <div class="col-md-6">
-          <label class="form-label text-muted mb-0">Education</label>
-          <div> <%= @user.education %></div>
-        </div>
-        <div class="col-md-6">
-          <label class="form-label text-muted mb-0">Work Experience</label>
-          <div><%= @user.work_experience %></div>
-        </div>
-        <div class="col-md-12">
-          <label class="form-label text-muted mb-0">Expertise</label>
-          <div><%= @user.expertise %></div>
-        </div>
-        <div class="col-md-12">
-          <label class="form-label text-muted mb-0">Hobbies</label>
-          <div><%= @user.hobbies %></div>
-        </div>
-        <div class="col-md-12">
-          <label class="form-label text-muted mb-0">Social Links</label>
-          <%# <div><%= @user.links %></div> %>
-        </div>
-        <div class="col-md-12">
-          <label class="form-label text-muted mb-0">Contact Info</label>
-          <div><%= @user.contact_info %></div>
-        </div>
+  <div class="profile-card container w-75 my-4 ">
+    <div class="profile">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "user-img" %>
+      <% else %>
+        <%= image_tag "avatar.svg", class:"user-img" %>
+      <% end %>
+      <div class="user-info">
+        <h3><%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize  %></h3>
+     <% if @user.location.present? %>
+      <p class="user-location"><%= @user.location %></p>
+    <% end %>
       </div>
     </div>
+    <div class="profile-info">
+
+    <div class="about-user">
+      <h4>About me</h4>
+      <% if @user.about_me.present? %>
+      <p><%= @user.about_me %></p>
+    <% end %>
+    </div>
+    <div class="work-exp-user">
+      <h4>Work Experience</h4>
+      <% if @user.work_experience.present? %>
+        <p><%= @user.work_experience %></p>
+      <% end %>
+    </div>
+    <div class="edu-user">
+      <h4>Education</h4>
+      <% if @user.education.present? %>
+        <p><% (@user.education || '').split(",") do |edu| %>
+              <li class="edu-user"><%= edu.strip %></li>
+            <% end %></p>
+      <% end %>
+    </div>
+    <div class="skills-user">
+      <h4>Skills</h4>
+      <% if @user.expertise.present? %>
+        <p><% (@user.expertise || '').split(/[., ;]/).select{|skill| skill != ""}.each do |skill| %>
+              <span class="pill skills"><%= skill.strip %></span>
+            <% end %></p>
+      <% end %>
+    </div>
+    <div class="hobbies-user">
+      <h4>Hobbies</h4>
+      <% if @user.hobbies.present? %>
+        <p>
+          <% (@user.hobbies || '').split(/[., ;]/).select{|skill| skill != ""}.each do |skill| %>
+                <span class="pill skills"><%= skill.strip %></span>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="social">
+      <h4>Social</h4>
+      <div class="social-links">
+      <div class="social-icon">
+         <% if @user.portfolio_url.present? %>
+        <%= link_to (@user.portfolio_url.starts_with?("http") ? @user.portfolio_url : "https://#{@user.portfolio_url}"), target: "_blank", rel: "noopener" do %>
+            <i class="fa-solid fa-globe"></i>
+            <p>Portffolio</p>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="social-icon">
+        <% if @user.github_url.present? %>
+          <%= link_to (@user.github_url.starts_with?("http") ? @user.github_url : "https://#{@user.github_url}"), target: "_blank", rel: "noopener" do %>
+            <i class="fa-brands fa-github"></i>
+            <p>Github</p>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="social-icon">
+         <% if @user.linkedin_url.present? %>
+          <%= link_to (@user.linkedin_url.starts_with?("http") ? @user.linkedin_url : "https://#{@user.link_url}"), target: "_blank", rel: "noopener" do %>
+              <i class="fa-brands fa-linkedin"></i>
+              <p>Linkedin</p>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="social-icon">
+        <% if @user.twitter_url.present? %>
+          <%= link_to (@user.twitter_url.starts_with?("http") ? @user.twitter_url : "https://#{@user.twitter_url}"), target: "_blank", rel: "noopener" do %>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
+          <% end %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+    <div class="contact-user">
+      <h4>Contact</h4>
+      <p><%= @user.email %></p>
+      <% if @user.contact_info.present? %>
+        <p>
+          <% (@user.contact_info || '').split(/[., ;]/).select{|contact| contact != ""}.each do |contact| %>
+                <span class="pill skills"><%= contact.strip %></span>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+    </div>
   </div>
-<%= link_to "Update Your Profile", edit_user_path(@user), class: "btn btn-primary m-4 rounded-4 text-center" %>
 </div>
