@@ -79,7 +79,7 @@
           <%# message feature %>
           <div>
             <div class="container chat <%= "d-none" if current_user.employer.nil? && @application.messages.empty? %>">
-              <h3>Your chat for <%= @application.project.project_title %></h3>
+              <span class="mt-3"><strong>Your chat for <%= @application.project.project_title %>..</strong></span>
               <%= turbo_stream_from "application_#{@application.id}_messages" %>
               <div id="messages" class="messages">
                 <% @application.messages.each do |message| %>
