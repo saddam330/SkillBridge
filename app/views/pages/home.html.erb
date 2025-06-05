@@ -56,7 +56,7 @@
       <span><%= image_tag("quote.svg")%></span>
       <p class="review-comment"><%= feedback.comment %></p>
       <div class="info">
-          <span><%= cl_image_tag feedback.application.user.photo.key if feedback.application.user.photo.present? %></span>
+          <span><%= cl_image_tag feedback.user.photo.key if feedback.user.photo.present? %></span>
         <div class="project-info">
           <p class="user-name"><%= feedback.user.first_name %></p>
           <p class="project-title"><%= feedback.application.project.project_title %></p>
