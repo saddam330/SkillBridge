@@ -1,6 +1,6 @@
 <div class="container">
   <div class="welcome">
-    <h2> Welcome! <%= @user.first_name.capitalize %> </h2>
+    <h2> Welcome <%= @user.first_name.capitalize %> !</h2>
   <%= link_to "Update Your Profile", edit_user_path(@user), class: "btn btn-primary m-4 rounded-4 text-center" %>
   </div>
   <div class="profile-card container w-75 my-4 ">
