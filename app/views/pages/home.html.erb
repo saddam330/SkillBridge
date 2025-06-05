@@ -4,7 +4,11 @@
    <span class="pill">Connecting talent with opportunity</span>
     <h1>SkillBridge Where Talents Meet Start-up.</h1>
     <p class="tagline m-1">Bridges the gap between ambitious individual seeking real-world experience and startups looking for fresh talent.</p>
-    <p><%= link_to "Get Started", projects_path, class: "btn btn-primary mt-4" %></p>
+    <% if !current_user.employer %>
+     <p><%= link_to "Get Started", projects_path, class: "btn btn-primary mt-4" %></p>
+    <% else %>
+     <p><%= link_to "Get Started", new_project_path, class: "btn btn-primary mt-4" %></p>
+    <% end %>
   </div>
 </div>
 <% if user_signed_in? %>
@@ -55,7 +59,8 @@
     <div class="feedback-card">
       <span><%= image_tag("quote.svg")%></span>
       <p class="review-comment"><%= feedback.comment %></p>
-      <div class="info">
+     <div class="feedback-bottom">
+       <div class="info">
           <span><%= cl_image_tag feedback.user.photo.key if feedback.user.photo.present? %></span>
         <div class="project-info">
           <p class="user-name"><%= feedback.user.first_name %></p>
@@ -63,6 +68,7 @@
         </div>
       </div>
       <p class="rating"> <%= "⭐" * feedback.rating %> </p>
+     </div>
     </div>
   <% end %>
   </div>
