@@ -2,6 +2,3 @@
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
-import NotificationController from "./notification_controller"
-
-application.register("notification", NotificationController)
