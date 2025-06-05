@@ -3,7 +3,7 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = @application.feedbacks.new(feedback_params)
-
+    @feedback.user = current_user
     if @feedback.save
       redirect_to application_path(@application), notice: "Thanks for your feedback!"
     else

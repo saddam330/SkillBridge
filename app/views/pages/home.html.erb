@@ -58,8 +58,8 @@
       <div class="info">
           <span><%= cl_image_tag feedback.application.user.photo.key if feedback.application.user.photo.present? %></span>
         <div class="project-info">
-          <p class="user-name"><%= feedback.application.user.first_name %></p>
-          <p class="project-title"><%= feedback.application.project.job_title %></p>
+          <p class="user-name"><%= feedback.user.first_name %></p>
+          <p class="project-title"><%= feedback.application.project.project_title %></p>
         </div>
       </div>
       <p class="rating"> <%= "⭐" * feedback.rating %> </p>
