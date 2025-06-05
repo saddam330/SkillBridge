@@ -4,7 +4,7 @@
    <span class="pill">Connecting talent with opportunity</span>
     <h1>SkillBridge Where Talents Meet Start-up.</h1>
     <p class="tagline m-1">Bridges the gap between ambitious individual seeking real-world experience and startups looking for fresh talent.</p>
-    <% if !current_user.employer %>
+    <% if !current_user&.employer %>
      <p><%= link_to "Get Started", projects_path, class: "btn btn-primary mt-4" %></p>
     <% else %>
      <p><%= link_to "Get Started", new_project_path, class: "btn btn-primary mt-4" %></p>
