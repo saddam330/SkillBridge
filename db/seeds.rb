@@ -11,12 +11,12 @@
 require 'faker'
 
 # Clear existing data
-Message.delete_all
-Feedback.delete_all
-Application.delete_all
-Project.delete_all
-Notification.delete_all
-User.delete_all
+Message.destroy_all
+Feedback.destroy_all
+Application.destroy_all
+Project.destroy_all
+Notification.destroy_all
+User.destroy_all
 
 # Create Users
 users = User.create!([

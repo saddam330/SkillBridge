@@ -79,7 +79,7 @@
       </div>
       <div class="social-icon">
          <% if @user.linkedin_url.present? %>
-          <%= link_to (@user.linkedin_url.starts_with?("http") ? @user.linkedin_url : "https://#{@user.link_url}"), target: "_blank", rel: "noopener" do %>
+          <%= link_to (@user.linkedin_url.starts_with?("http") ? @user.linkedin_url : "https://#{@user.linkedin_url}"), target: "_blank", rel: "noopener" do %>
               <i class="fa-brands fa-linkedin"></i>
               <p>Linkedin</p>
           <% end %>
