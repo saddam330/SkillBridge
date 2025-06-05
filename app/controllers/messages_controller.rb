@@ -15,6 +15,7 @@ class MessagesController < ApplicationController
       # Create notification
       Notification.create!(
         user: recipient,
+        application_id: @application.id,
         content: "💬 New message from #{current_user.first_name} regarding '#{@application.project.project_title}'"
       )
       respond_to do |format|
