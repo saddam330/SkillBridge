@@ -1,7 +1,7 @@
 class Application < ApplicationRecord
   belongs_to :user
   belongs_to :project
-  has_many :feedbacks
+  has_many :feedbacks, dependent: :destroy
   has_many :messages, dependent: :destroy
   validates :status, presence: true
   validates :skills, presence: true
